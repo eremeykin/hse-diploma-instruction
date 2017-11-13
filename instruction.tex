@@ -64,9 +64,6 @@
 
 \robustify{\dirbox}
 
-%\newtcbox{\menubox}{nobeforeafter,boxrule=0.5pt,arc=4pt,colback=myblue,
-%	boxsep=0pt,left=6pt,right=6pt,top=2pt,bottom=2pt,tcbox raise base}
-
 
 % Add glosaries
 \usepackage[acronym]{glossaries}
@@ -142,8 +139,27 @@
 
 % for pagebreak in tabularx
 \usepackage{ltablex}
-\begin{document} 
 
+% for tableitem header with italic font
+%\newcounter{titem}
+%\newenvironment{titem}[1][]{\refstepcounter{titem}\par\medskip
+%	\textit{\thetableitem. #1} }{\medskip}
+
+
+
+
+\newcounter{titem}[table]
+\newenvironment{titem}[2][]{\refstepcounter{titem}\par\medskip
+	\noindent \textit{
+			\begin{flushleft}
+				\begin{hyphenrules}{nohyphenation}
+					\thetitem.~#1~#2\newline
+				\end{hyphenrules}
+			\end{flushleft}
+			}}{\medskip}
+
+
+\begin{document} 
 \begin{titlepage}
 	\centering
 	{\scshape\small Национальный исследовательский университет \\
@@ -292,9 +308,6 @@
 
 Просмотр результатов кластеризации может состоять в отслеживании принадлежности каждого объекта определенным кластерам или получении графического представления найденной кластерной структуры. Также система INDACT позволяет представить результат в виде интегральной таблице или в виде текстового отчёта.
 
-\newcounter{tableitem}
-\newenvironment{tableitem}[1][]{\refstepcounter{tableitem}\par\medskip
-\textit{\thetableitem. #1} }{\medskip}
 
 \subsection{Общие сведения о пользовательском интерфейсе}
 
@@ -306,7 +319,7 @@
 \begin{figure}[h!]
 \includegraphics[trim={180 150 172  25},clip,width=0.95\textwidth]{img/guicommonannotated.jpg}
 \caption{Основные элементы пользовательского интерфейса}
-\label{fig:scheme-a}
+\label{fig:main-window}
 \end{figure}
 \begin{enumerate}
 	\item Главное меню, элемент интерфейса, содержащий основные команды
@@ -497,63 +510,56 @@
 \newpage
 \section{Описание операций}
 
+
 \subsection{Запуск программы}
 Для работы с программой требуется запустить процесс OC, который отображает графический интерфейс и взаимодействует с пользователем. Действия этой операции приведены в таблице ниже.
 
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
-	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Запустить бинарный\\ файл программы\\}}
-	\end{tableitem}
 	
-	Дважды нажать левой кнопкой мыши (ЛКМ) на значке \texttt{INDACT.exe} &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runexe}}
-	\\
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Дождаться запуска\\}}
-	\end{tableitem}
+	\begin{titem}{Запустить бинарный файл программы}
+		Дважды нажать левой кнопкой мыши (ЛКМ) на значке \texttt{INDACT.exe} 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runexe}} \\
 	
-	Подождать, пока произойдёт инициализация среды выполнения Python. Открытие чёрного консольного окна, означает что установлена отладочная версия программы. Его не следует закрывать.   &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/gui}}
-	\\	
+	\midrule
+	\begin{titem}{Дождаться запуска}
+		Подождать, пока произойдёт инициализация среды выполнения Python. Открытие чёрного консольного окна, означает что установлена отладочная версия программы. Его не следует закрывать.   
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/gui}} \\
+		
 	\bottomrule
 \end{tabularx}	
 
-
-
-
+\newpage
 \subsection{Загрузка исходных данных}
 \label{subsec:dataload}
 
 Загрузка данных необходима для того чтобы подать программе файл, который содержит таблицу данных. Формат файла должен удовлетворять набору требований, перечисленных в разделе ``\ref{subsec:req} Требования к файлу исходных данных''. 
 
-\newpage
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
-	\midrule
-	\begin{tableitem}
-			\parbox[t]{4.5cm}{\textit{Открыть диалог\\ загрузки файла\\}}
-	\end{tableitem}
-
-	Для открытия диалога загрузки файла необходимо последовательно нажать в главном меню пункты \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Open}}. &  \raisebox{-\totalheight}{\includegraphics[trim={0 200 172 0 0},clip,width=0.65\textwidth]{img/fileopen}}
-	\\
-	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выбрать текстовый\\файл с данными\\}}
-	\end{tableitem}
-		
-	В файловом диалоге необходимо выбрать загружаемый файл и нажать кнопку \menubox{\texttt{Open}}. Например, для загрузки демонстрационного примера следует выбрать файл \texttt{INDACT/example/} \texttt{smartphones.dat} &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/filedialog.png}}
-	\\	
-	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Проверить загрузку\\ исходного файла}}
-	\end{tableitem}
 	
-	После выполнения предыдущего пункта будет произведена загрузка файла и отображение его содержимого в виде таблицы в интерфейсе программы. Пользователю следует убедиться, что загружен правильный файл, объекты и признаки отображаются верно. На рисунке справа показан загруженный файл \texttt{smartphones.dat} &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/loadeddata.png}}
-	\\
+	\midrule
+	\begin{titem}{Открыть диалог загрузки файла}
+			Для открытия диалога загрузки файла необходимо последовательно нажать в главном меню пункты \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Open}}. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[trim={0 200 172 0 0},clip,width=0.65\textwidth]{img/fileopen}}	\\
+
+	\midrule
+	\begin{titem}{Выбрать текстовый файл с данными}
+			В файловом диалоге необходимо выбрать загружаемый файл и нажать кнопку \menubox{\texttt{Open}}. Например, для загрузки демонстрационного примера следует выбрать файл \texttt{INDACT/example/} \texttt{smartphones.dat} 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/filedialog.png}} \\	
+
+	\midrule
+	\begin{titem}{Проверить загрузку исходного файла}
+		После выполнения предыдущего пункта будет произведена загрузка файла и отображение его содержимого в виде таблицы в интерфейсе программы. Пользователю следует убедиться, что загружен правильный файл, объекты и признаки отображаются верно. На рисунке справа показан загруженный файл \texttt{smartphones.dat} 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/loadeddata.png}}	\\
 	\bottomrule
 \end{tabularx}	
 
@@ -563,82 +569,59 @@
 
 Назначение и параметры нормализации описаны в разделе ``\ref{subsec:norm} Нормализация''.
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Открыть диалог\\ нормализации}}
-	\end{tableitem}
-	
-	Диалог нормализации можно открыть выбрав в главном меню пункты \menubox{\texttt{Settings}} $ \Rightarrow $ \menubox{\texttt{Normalization}}.
-	 &  \raisebox{-\totalheight}
-	 {\includegraphics[trim={0 50 0 0},clip,width=0.65\textwidth]{img/opennormalizationdialog.png}}
-	\\
+	\begin{titem}{Открыть диалог нормализации}
+		Диалог нормализации можно открыть выбрав в главном меню пункты \menubox{\texttt{Settings}} $ \Rightarrow $ \menubox{\texttt{Normalization}}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[trim={0 50 0 0},clip,width=0.65\textwidth]{img/opennormalizationdialog.png}}\\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Включить \\нормализацию}}
-	\end{tableitem}
-	
-	Чтобы включить нормализацию требуется снять отметку с пункта ``\texttt{Normalization disabled}''. Выполнение этого действия снимет блокировку с полей параметров нормализации.&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizationdialog.png}}
-	\\
-	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выставить \\параметры}}
-	\end{tableitem}
+	\begin{titem}{Включить нормализацию}
+		Чтобы включить нормализацию требуется снять отметку с пункта ``\texttt{Normalization disabled}''. Выполнение этого действия снимет блокировку с полей параметров нормализации.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizationdialog.png}} \\
 
-	Для нормализации данных необходимо задать центр и диапазон нормализации. Эти параметры выбираются из выпадающих списков. Для завершения настройки нормализации нажать кнопку \menubox{\texttt{OK}}. Пример установки параметров приведён в разделе \ref{subsubseq:example_norm1}. &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizationenableddialog.png}}
-	\\
+	\midrule
+	\begin{titem}{Выставить параметры}
+		Для нормализации данных необходимо задать центр и диапазон нормализации. Эти параметры выбираются из выпадающих списков. Для завершения настройки нормализации нажать кнопку \menubox{\texttt{OK}}. Пример установки параметров приведён в разделе \ref{subsubseq:example_norm1}. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizationenableddialog.png}} \\
 	\bottomrule
 \end{tabularx}
 
+\newpage
 \subsubsection{Нормализация одного признака}
 \label{subsubsec:onenorm}
 После настройки параметров нормализации необходимо выбрать какие признаки требуется нормализовать. Только выбранные признаки будут участвовать в кластеризации. В программе предусмотрено три возможности для выбора признаков: выбор по одному, выбор всех сразу и удаление по одному. 
 
-
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выбрать признак \\ для нормализации}}
-	\end{tableitem}
 	
-	Для выбора одного признака необходимо найти столбец признака во вкладке ``\texttt{Raw Data}'' и нажать на нем правой кнопкой мыши (ПКМ). В контекстном меню выбрать пункт \menubox{\texttt{Normalize}}. На примере показана операция нормализации признака \texttt{stype}.
+	\begin{titem}{Выбрать признак для нормализации}
+		Для выбора одного признака необходимо найти столбец признака во вкладке ``\texttt{Raw Data}'' и нажать на нем правой кнопкой мыши (ПКМ). В контекстном меню выбрать пункт \menubox{\texttt{Normalize}}. На примере показана операция нормализации признака \texttt{stype}.
+	\end{titem}
 	&  \raisebox{-\totalheight}
 	{\includegraphics[trim={0 0 0 0},clip,width=0.65\textwidth]{img/normalizeonefeature.png}}
 	\\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{(При необходимости)\\ Подтвердить\\ нормализацию\\категориального\\ признака}}
-	\end{tableitem}
-	
-	Если был выбран категориальный признак (в примере \texttt{stype}), то программа запросит подтверждение разложения признака на бинарные. В случае согласия произойдёт добавление бинарных признаков, отвечающих за наличие каждого из значений категориального признака \textit{ и их нормализация}.
-	 &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/approvenominal.png}}
-	\\
-	\bottomrule
-	
-\end{tabularx}
+	\begin{titem}{(При необходимости) Подтвердить нормализацию категориального признака}
+			Если был выбран категориальный признак (в примере \texttt{stype}), то программа запросит подтверждение разложения признака на бинарные. В случае согласия произойдёт добавление бинарных признаков, отвечающих за наличие каждого из значений категориального признака \textit{ и их нормализация}.
+	\end{titem}
+	 &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/approvenominal.png}} \\
 
-\newpage
-\noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
-	\toprule
-	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Просмотр вида \\таблицы}}
-	\end{tableitem}
-	
-	После выбора признака, он будет перенесён из вкладки ``\texttt{Raw Data}'' во вкладку ``\texttt{Normalized Data}'' и к нему будут применены выбранные настройки нормализации. Дополнительно во вкладке  ``\texttt{Normalized Data}'' будет отображён столбец ``\texttt{Cluster\#}'', который будет оставаться заполненным символами ``\texttt{?}'' до тех пор, пока не будет выполнен шаг кластеризации (см. верхний рисунок, нормализация признака \texttt{price}). Сказанное выше справедливо и для номинального признака (например \texttt{stype}), но стоит иметь ввиду что соответствующие бинарные признаки будут названы \texttt{stype[значение признака]} (как показано на нижнем рисунке)
+	\begin{titem}{Просмотр вида таблицы}
+			После выбора признака, он будет перенесён из вкладки ``\texttt{Raw Data}'' во вкладку ``\texttt{Normalized Data}'' и к нему будут применены выбранные настройки нормализации. Дополнительно во вкладке  ``\texttt{Normalized Data}'' будет отображён столбец ``\texttt{Cluster\#}'', который будет оставаться заполненным символами ``\texttt{?}'' до тех пор, пока не будет выполнен шаг кластеризации (см. верхний рисунок, нормализация признака \texttt{price}). Сказанное выше справедливо и для номинального признака (например \texttt{stype}), но стоит иметь ввиду что соответствующие бинарные признаки будут названы \texttt{stype[значение признака]} (как показано на нижнем рисунке)
+	\end{titem}
 	 &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizedonefeature.png}} 
 
-		 \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizedonenominalfeature.png}} 
-	\\
+		 \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizedonenominalfeature.png}}	\\
 	\bottomrule
 \end{tabularx}
 
@@ -647,37 +630,26 @@
 
 Если признаков много и нормализовать их по одному долго, то можно воспользоваться функцией нормализации всех признаков сразу.
 
-
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Запустить \\нормализацию \\всех признаков }}
-	\end{tableitem}
-	
-	Для запуска нормализации всех признаков сразу, требуется в главном меню выбрать \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Data}}  $ \Rightarrow $  \menubox{\texttt{Normalize All}}.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeall.png}}
-	\\
+	\begin{titem}{Запустить нормализацию всех признаков }
+			Для запуска нормализации всех признаков сразу, требуется в главном меню выбрать \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Data}}  $ \Rightarrow $  \menubox{\texttt{Normalize All}}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeall.png}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{(При необходимости)\\ Подтвердить\\ нормализацию\\категориального\\ признака}}
-	\end{tableitem}
-	
-	Если имеется хотя бы один категориальный признак, то программа запросит подтверждение разложения признака по количеству уникальных значений. В случае согласия программа представит номинальный признак с помощью бинарных.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/approvenominal.png}}
-	\\
-	\midrule
+	\begin{titem}{(При необходимости) Подтвердить нормализацию категориального признака}
+		Если имеется хотя бы один категориальный признак, то программа запросит подтверждение разложения признака по количеству уникальных значений. В случае согласия программа представит номинальный признак с помощью бинарных.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/approvenominal.png}}	\\
 
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть \\результат}}
-	\end{tableitem}
-	
-	После нормализации признаков результат будет отображен во вкладке ``\texttt{Normalized Data}''
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresult.png}}
-	\\
+	\midrule
+	\begin{titem}{Посмотреть результат}	
+		После нормализации признаков результат будет отображен во вкладке ``\texttt{Normalized Data}''
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresult.png}}	\\
 	\bottomrule
 \end{tabularx}
 
@@ -689,30 +661,24 @@
 
 Как было отмечено выше, программа позволяет удалять отдельные признаки из как вкладки ``\texttt{Normalized Data}'' так и ``\texttt{Raw Data}''. Эта функция может быть применена для исключения из рассмотрения определённых признаков.
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
+
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выбрать признак \\ для удаления}}
-	\end{tableitem}
-	
+	\begin{titem}{Выбрать признак \\ для удаления}	
 	Для удаления одного признака необходимо найти столбец признака в нужной вкладке и нажать на нём ПКМ. В контекстном меню выбрать пункт \menubox{\texttt{Delete}}. 
 	
 	Рассмотрим удаление на примере признака \texttt{diag}. Контекстное меню, открытое после нажатия на заголовке \texttt{diag} показано на рисунке справа.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/deleteone}}
-	\\
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/deleteone}}	\\
+
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть \\результат}}
-	\end{tableitem}
-	
-	В результате выполнения операции выбранный признак будет удалён только из вкладки ``\texttt{Raw Data}'', но останется во второй вкладке.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/deleteoneresult}}
-	\\
+	\begin{titem}{Посмотреть результат}
+		В результате выполнения операции выбранный признак будет удалён только из вкладки ``\texttt{Raw Data}'', но останется во второй вкладке.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/deleteoneresult}} \\
 	\bottomrule
-	
 \end{tabularx}
 
 \newpage
@@ -720,28 +686,23 @@
 
 Если требуется полностью очистить вкладку ``\texttt{Normalized Data}'', то следует воспользоваться функцией, описанной ниже. Функция очистки вкладки нормализованных данных применяется для того чтобы сбросить выбор всех признаков.
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
+
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Запустить удаление}}
-	\end{tableitem}
-	
-	Функция удаления всех признаков сразу вызывается из главного меню программы: \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Data}}  $ \Rightarrow $  \menubox{\texttt{Clear Normalized }}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clearnormalized}}
-	\\
+	\begin{titem}{Запустить удаление}
+		Функция удаления всех признаков сразу вызывается из главного меню программы: \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Data}}  $ \Rightarrow $  \menubox{\texttt{Clear Normalized }}
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clearnormalized}} \\
+
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть \\результат}}
-	\end{tableitem}
-	
-	В результате выполнения операции вкладка ``\texttt{Normalized Data}'' будет очищена полностью.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clearnormalizedresult}}
-	\\
-	\bottomrule
-	
+	\begin{titem}{Посмотреть результат}	
+		В результате выполнения операции вкладка ``\texttt{Normalized Data}'' будет очищена полностью.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clearnormalizedresult}} \\
+
+	\bottomrule	
 \end{tabularx}
 
 
@@ -752,40 +713,28 @@
 Допустим, исходный файл содержит признак, который не требуется использовать для анализа, но который был бы полезен как уникальный индекс, например, это может быть название модели телефона. В таком случае в программе предусмотрена функция задания признака в качестве индекса. 
 
 \newpage
-\setcounter{tableitem}{0}
+
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	
-	
+	\midrule
+	\begin{titem}{Загрузить файл}
+		Загрузка файла описана в разделе ``\ref{subsec:dataload} Загрузка исходных данных''.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/loadnamed}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Загрузить файл}}
-	\end{tableitem}
-	
-	Загрузка файла описана в разделе ``\ref{subsec:dataload} Загрузка исходных данных''.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/loadnamed}}
-	\\
-	
+	\begin{titem}{Выбрать признак}
+		Для выбора признака необходимо найти его столбец в одной из вкладок и нажать ПКМ на нём. В контекстном меню выбрать пункт \menubox{\texttt{Set}} $\Rightarrow$ \menubox{\texttt{As Index}} 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/asindex}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выбрать признак}}
-	\end{tableitem}
-	
-	Для выбора признака необходимо найти его столбец в одной из вкладок и нажать ПКМ на нём. В контекстном меню выбрать пункт \menubox{\texttt{Set}} $\Rightarrow$ \menubox{\texttt{As Index}} 
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/asindex}}
-	\\
-	
-	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть\\ результат}}
-	\end{tableitem}
-	
-	Результат выполнения предыдущего действия состоит в отображении признака в колонке индекса как показано на рисунке справа.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/asindexcompleted}}
-	\\
+	\begin{titem}{Посмотреть результат}
+		Результат выполнения предыдущего действия состоит в отображении признака в колонке индекса как показано на рисунке справа.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/asindexcompleted}} \\
 	\bottomrule
 \end{tabularx}
 
@@ -794,28 +743,23 @@
 
 Программа имеет два способа отображения данных: с помощью вкладок и с помощью панелей (по умолчанию).Для переключения этих способов служит пункт меню \menubox{\texttt{View}}
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
+	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Переключить способ \\отображения}}
-	\end{tableitem}
+	\begin{titem}{Переключить способ отображения}
+		Для переключения способа отображения следует выбрать из главного меню программы: \menubox{\texttt{View}} $ \Rightarrow $ \menubox{\texttt{Layout}}  $ \Rightarrow $  \menubox{\texttt{Tab Layout}} или \menubox{\texttt{Panel Layout}}
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/view1}} \\
 
-	Для переключения способа отображения следует выбрать из главного меню программы: \menubox{\texttt{View}} $ \Rightarrow $ \menubox{\texttt{Layout}}  $ \Rightarrow $  \menubox{\texttt{Tab Layout}} или \menubox{\texttt{Panel Layout}}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/view1}}
-	\\
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть \\результат}}
-	\end{tableitem}
-	
+	\begin{titem}{Посмотреть результат}
 	В результате выполнения операции панели ``\texttt{Raw Data}'' и ``\texttt{Normalized Data}'' будут отображены одна за другой.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/tabview}}
-	\\
-	\bottomrule
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/tabview}} \\
 	
+	\bottomrule
 \end{tabularx}
 
 \newpage
@@ -825,33 +769,21 @@
 
 В качестве первичного инструмента анализа программа предлагает возможность построения гистограммы по выбранному признаку.
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 
-
-
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выбрать признак}}
-	\end{tableitem}
-	
-	Для выбора признака необходимо найти его столбец в одной из вкладок и нажать ПКМ на нём. В контекстном меню выбрать пункт \menubox{\texttt{Histogram}}. На примере показано построение гистограммы по признаку \texttt{price}.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/histmenu}}
-	\\
-	
+	\begin{titem}{Выбрать признак}
+		Для выбора признака необходимо найти его столбец в одной из вкладок и нажать ПКМ на нём. В контекстном меню выбрать пункт \menubox{\texttt{Histogram}}. На примере показано построение гистограммы по признаку \texttt{price}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/histmenu}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть \\результат}}
-	\end{tableitem}
-	
-	После выбора признака будет построена гистограмма в отдельном окне. 
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/histexample}}
-	\\
-	
-	
+	\begin{titem}{Посмотреть результат}
+		После выбора признака будет построена гистограмма в отдельном окне. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/histexample}} \\
 	\bottomrule
 \end{tabularx}
 
@@ -861,85 +793,50 @@
 
 Для первичного анализа структуры данных или результатов кластеризации в программе предусмотрена функция построения поля рассеяния по меткам на выбранных признаках. Метка --- вспомогательный символ, присваиваемый пользователем для  определённого признака.  Предусмотрено 3 вида меток: ``\texttt{X}'', ``\texttt{Y}'', ``\texttt{C}''. Первый вид означает что отмеченный признак будет соответствовать координатам объекта по оси абсцисс, второй --- по оси ординат, а третий, что цвет (\textit{Color}) точки будет выбираться в соответствии со значением отмеченного признака
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	
-	
+	\midrule
+	\begin{titem}{Выбрать признак по оси X}
+		Для построения поля рассеяния требуется задать признаки по осям абсцисс и ординат. Чтобы отметить признак, соответствующий оси абсцисс, требуется нажать на его названии ПКМ и в контекстном меню выбрать
+		\menubox{\texttt{Set}} $\Rightarrow$ \menubox{\texttt{as X}} 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/setasx}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выбрать признак\\ по оси X}}
-	\end{tableitem}
-	
-	Для построения поля рассеяния требуется задать признаки по осям абсцисс и ординат. Чтобы отметить признак, соответствующий оси абсцисс, требуется нажать на его названии ПКМ и в контекстном меню выбрать
-	\menubox{\texttt{Set}} $\Rightarrow$ \menubox{\texttt{as X}} 
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/setasx}}
-	\\
+	\begin{titem}{Посмотреть результат}
+			После установки маркера ``\texttt{X}'' к имени соответствующего признак добавиться ``\texttt{(X)}''
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/setasxresult}} \\	
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть \\ результат}}
-	\end{tableitem}
-	
-	После установки маркера ``\texttt{X}'' к имени соответствующего признак добавиться ``\texttt{(X)}''
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/setasxresult}}
-	\\	
+	\begin{titem}{Выбрать признак по оси Y}
+	\end{titem}
+	& 	\parbox[t]{12cm}{ \vphantom{нечто} Аналогично пунктам 1,2.} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выбрать признак\\ по оси Y}}
-	\end{tableitem}
-	
-	
-	& 	\parbox[t]{12cm}{ \vphantom{нечто} Аналогично пунктам 1,2.}
-	\\
-	
-	
-	\bottomrule
-\end{tabularx}
-
-
-\newpage
-\noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
-	\toprule
-	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
-	
+	\begin{titem}{Выбрать признак отвечающий за цвет точек}
+		Для того чтобы задать какой признак будет определять цвет точек на диаграмме необходимо выставить маркер \texttt{C}. Для этого выбрать признак, нажать ПКМ и в контекстном меню выбрать \menubox{\texttt{Set}} $\Rightarrow$ \menubox{\texttt{as С}} 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/setcmarker}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выбрать признак\\ отвечающий за \\цвет точек}}
-	\end{tableitem}
-	
-	Для того чтобы задать какой признак будет определять цвет точек на диаграмме необходимо выставить маркер \texttt{C}. Для этого выбрать признак, нажать ПКМ и в контекстном меню выбрать \menubox{\texttt{Set}} $\Rightarrow$ \menubox{\texttt{as С}} 
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/setcmarker}}
-	\\
+	\begin{titem}{Построить sctter plot}
+		В главном меню выбрать \menubox{\texttt{Plot}} $\Rightarrow$ \menubox{\texttt{Plot Data by Markers}} 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/plotbymarkers}}\\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Построить sctter\\ plot}}
-	\end{tableitem}
-	
-	В главном меню выбрать \menubox{\texttt{Plot}} $\Rightarrow$ \menubox{\texttt{Plot Data by Markers}} 
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/plotbymarkers}}
-	\\
+	\begin{titem}{Посмотреть результат}
+			В новом окне откроется построенная диаграмма
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth, height=0.3\textheight]{img/scatterplot}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть результат}}
-	\end{tableitem}
-	
-	В новом окне откроется построенная диаграмма
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth, height=0.3\textheight]{img/scatterplot}}
-	\\
-	\midrule
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Удалить метки\\ (опционально)}}
-	\end{tableitem}
-	
-	В главном меню выбрать \menubox{\texttt{Plot}} $\Rightarrow$ \menubox{\texttt{Delete All Markers}}. При этом отметки ``\texttt{(X)}'', ``\texttt{(Y)}'' и ``\texttt{(C)}'' будут удалены.
+	\begin{titem}{Удалить метки (опционально)}
+		В главном меню выбрать \menubox{\texttt{Plot}} $\Rightarrow$ \menubox{\texttt{Delete All Markers}}. При этом отметки ``\texttt{(X)}'', ``\texttt{(Y)}'' и ``\texttt{(C)}'' будут удалены.
+	\end{titem}
 	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/deleteallmarkers}} \\
 	
 	\bottomrule
@@ -951,26 +848,20 @@
 \label{subsubsec:svd}
 Для интегральной оценки структуры данных предусмотрена функция построения SVD диаграммы. Имеется возможность построения SVD диаграммы по нормализованным и не нормализованным данным.
 
-
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Построить SVD\\ диаграмму}}
-	\end{tableitem}
-	
-	Для построения SVD диаграммы в главном меню выбрать \menubox{\texttt{Plot}} $\Rightarrow$ \menubox{\texttt{SVD}} $\Rightarrow$ \menubox{\texttt{Normalized}} или \menubox{\texttt{Raw}} для построения диаграммы по нормализованным и не нормализованным данным соответственно.
+	\begin{titem}{Построить SVD диаграмму}
+		Для построения SVD диаграммы в главном меню выбрать \menubox{\texttt{Plot}} $\Rightarrow$ \menubox{\texttt{SVD}} $\Rightarrow$ \menubox{\texttt{Normalized}} или \menubox{\texttt{Raw}} для построения диаграммы по нормализованным и не нормализованным данным соответственно.
+	\end{titem}
 	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/svdplot}} \\
 		
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть результат}}
-	\end{tableitem}
-	
-	Построенная диаграмма откроется в новом окне.
+	\begin{titem}{Посмотреть результат}
+		Построенная диаграмма откроется в новом окне.
+	\end{titem}
 	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/svd}} \\
 	
 	\bottomrule
@@ -980,40 +871,26 @@
 \label{subsec:generation}
 Для генерирования искусственных данных необходимо вызвать диалог настройки параметры, указать все необходимые величины и сохранить сгенерированные данные в файл.
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	
-	
+	\midrule
+	\begin{titem}{Открыть диалог генерации данных}
+		Чтобы открыть диалог загрузки данных необходимо в главном меню программы выбрать \menubox{\texttt{File}} $\Rightarrow$ \menubox{\texttt{Data}} $\Rightarrow$ \menubox{\texttt{Generate}} 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[trim={0 200 0 0},clip,width=0.65\textwidth]{img/generatemenu}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Открыть диалог\\ генерации данных}}
-	\end{tableitem}
-	
-	Чтобы открыть диалог загрузки данных необходимо в главном меню программы выбрать \menubox{\texttt{File}} $\Rightarrow$ \menubox{\texttt{Data}} $\Rightarrow$ \menubox{\texttt{Generate}} 
-	&  \raisebox{-\totalheight}{\includegraphics[trim={0 200 0 0},clip,width=0.65\textwidth]{img/generatemenu}}
-	\\
-	
+	\begin{titem}{Указать параметры данных}
+		В открывшемся диалоге необходимо указать параметры данных, по которым будет производиться генерация. Подробнее о параметрах генерации см. \cite{kovaleva}. В верхней части диалога отображается статическая информирующая диаграмма. Когда все параметры будут введены, нажать кнопку \menubox{\texttt{OK}} и в стандартном диалоге сохранения указать файл, в который требуется записать результат. 	
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/generation.png}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Указать параметры\\ данных}}
-	\end{tableitem}
-	
-	В открывшемся диалоге необходимо указать параметры данных, по которым будет производиться генерация. Подробнее о параметрах генерации см. \cite{kovaleva}. В верхней части диалога отображается статическая информирующая диаграмма. Когда все параметры будут введены, нажать кнопку \menubox{\texttt{OK}} и в стандартном диалоге сохранения указать файл, в который требуется записать результат. 	
-
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/generation.png}}
-	\\
-	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Сохранить данные\\ в файл}}
-	\end{tableitem}
-
-	
-	 & 	\parbox[t]{12cm}{ \vphantom{нечто} Сохранить данные в файл в стандартном файловом\\ диалоге.}
-	 \\
+	\begin{titem}{Сохранить данные в файл}
+	\end{titem}
+	 & 	\parbox[t]{12cm}{ \vphantom{нечто} Сохранить данные в файл в стандартном файловом\\ диалоге.} \\
 
 	\bottomrule
 \end{tabularx}
@@ -1023,46 +900,27 @@
 
 Для определения принадлежности объектов кластерам требуется установить параметры кластеризации и запустить алгоритм.
 
-\setcounter{tableitem}{0}
-\noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
-	\toprule
-	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
-	
-	
-	
-	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Открыть диалог\\ выбора параметров}}
-	\end{tableitem}
-	
-	Пред запуском кластеризации потребуется задать общие параметры процедуры, по которым программа выберет конкретный алгоритм. Для этого необходимо из главного меню выбрать: \menubox{\texttt{Run}} $\Rightarrow$ \menubox{\texttt{Clustering}}. Подробнее про параметры см. \cite{amorim,kovaleva} и раздел \ref{sec:algs} После установки выбранных параметров для подтверждения нажать кнопку \menubox{\texttt{OK}}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runclusteringdialog.png}}
-	\\
-	
-	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Дождаться\\ результатов\\ кластеризации}}
-	\end{tableitem}
-	
-	Сразу после нажатия кнопки \menubox{\texttt{OK}} начнется работа алгоритма кластеризации. Когда алгоритм закончит работу, появится окно, изображённое справа. Если в окне нажать кнопку \menubox{\texttt{Show Details}} то появится дополнительная информация о выбранном алгоритме и времени работы. Нажать кнопку  \menubox{\texttt{OK}}.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/resultinfo.png}}
-	\\	
-	\bottomrule
-\end{tabularx}
-
-\newpage
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Проверить заполнение\\ столбца \texttt{Cluster\#}}}
-	\end{tableitem}
+	\begin{titem}{Открыть диалог выбора параметров}
+		Пред запуском кластеризации потребуется задать общие параметры процедуры, по которым программа выберет конкретный алгоритм. Для этого необходимо из главного меню выбрать: \menubox{\texttt{Run}} $\Rightarrow$ \menubox{\texttt{Clustering}}. Подробнее про параметры см. \cite{amorim,kovaleva} и раздел \ref{sec:algs} После установки выбранных параметров для подтверждения нажать кнопку \menubox{\texttt{OK}}
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runclusteringdialog.png}} \\
 	
-	В процессе кластеризации каждому объекту ставиться в соответствие номер кластера, которому он принадлежит. Для заданного объекта этот номер можно посмотреть в столбце ``\texttt{Cluster\#}''
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clustercolumn}}
-	\\	
+	\midrule
+	\begin{titem}{Дождаться результатов кластеризации}	
+		Сразу после нажатия кнопки \menubox{\texttt{OK}} начнется работа алгоритма кластеризации. Когда алгоритм закончит работу, появится окно, изображённое справа. Если в окне нажать кнопку \menubox{\texttt{Show Details}} то появится дополнительная информация о выбранном алгоритме и времени работы. Нажать кнопку  \menubox{\texttt{OK}}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/resultinfo.png}} \\	
+	
+	\midrule
+	\begin{titem}{Проверить заполнение столбца \texttt{Cluster\#}}
+			В процессе кластеризации каждому объекту ставиться в соответствие номер кластера, которому он принадлежит. Для заданного объекта этот номер можно посмотреть в столбце ``\texttt{Cluster\#}''
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clustercolumn}} \\	
 	\bottomrule
 \end{tabularx}
 
@@ -1070,41 +928,26 @@
 \label{subsec:report}
 Результаты кластеризации удобно анализировать по сгенерированному отчёту.
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Сгенерировать отчёт}}
-	\end{tableitem}
-	
-	Для генерации отчёта в главном меню выбрать \menubox{\texttt{Report}} $\Rightarrow$ \menubox{\texttt{Show}}.
+	\begin{titem}{Сгенерировать отчёт}
+		Для генерации отчёта в главном меню выбрать \menubox{\texttt{Report}} $\Rightarrow$ \menubox{\texttt{Show}}.
+	\end{titem}
 	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/showreport}} \\
 	
-	\bottomrule
-\end{tabularx}
-
-\newpage
-\noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
-	\toprule
-	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
-	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть окно\\ таблицы результатов}}
-	\end{tableitem}
-	
-	Отчёт состоит из двух окон. Первое --- окно с таблицей результатов. В этом окне приведена сводная таблица в которой строки соответствуют кластерам, а столбцы --- признакам. В ячейках указаны средние значения признака по кластеру. Красным цветом выделены ячейки, в которых относительная разность значения и средней величины признака по кластеру больше 30\%, соответственно синим --- меньше 30\%. Маржинальная строка содержит средние значения признаков по всем кластерам, а столбец --- число объектов в кластере.
+	\begin{titem}{Посмотреть окно таблицы результатов}
+		Отчёт состоит из двух окон. Первое --- окно с таблицей результатов. В этом окне приведена сводная таблица в которой строки соответствуют кластерам, а столбцы --- признакам. В ячейках указаны средние значения признака по кластеру. Красным цветом выделены ячейки, в которых относительная разность значения и средней величины признака по кластеру больше 30\%, соответственно синим --- меньше 30\%. Маржинальная строка содержит средние значения признаков по всем кластерам, а столбец --- число объектов в кластере.
+	\end{titem}
 	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/reporttable}} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть окно\\ текстового отчёта}}
-	\end{tableitem}
-	
-	Текстовый отчёт содержит все сведения относительно выбранного алгоритма, метода нормализации, и параметров каждого из кластеров.
+	\begin{titem}{Посмотреть окно текстового отчёта}
+		Текстовый отчёт содержит все сведения относительно выбранного алгоритма, метода нормализации, и параметров каждого из кластеров.
+	\end{titem}
 	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/reporttext}} \\
 	
 	\bottomrule
@@ -1113,18 +956,14 @@
 \newpage
 \subsection{Выход из программы}
 
-
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выйти из программы}}
-	\end{tableitem}
-	
-	Для выхода из программы в главном меню выбрать \menubox{\texttt{File}} $\Rightarrow$ \menubox{\texttt{Exit}}.
+	\begin{titem}{Выйти из программы}
+			Для выхода из программы в главном меню выбрать \menubox{\texttt{File}} $\Rightarrow$ \menubox{\texttt{Exit}}.
+	\end{titem}
 	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/exit}} \\
 	
 	\bottomrule
@@ -1133,13 +972,34 @@
 \section{Алгоритмы кластеризации (краткое описание)}
 \label{sec:algs}
 \subsection{Алгоритм $ A-Ward $}
-Доделать по \cite{amorim}
+\label{subsec:a-ward}
+Алгоритм A-Ward является усовершенствованием  широко известного алгоритма иерархической кластеризации Ward \cite{ward}. Этот алгоритм основан на пошаговом слиянии двух ближайших кластеров. На первом шаге все кластеры представлены в виде синглтонов, то есть кластеров, состоящих из единственного объекта, являющегося центроидом. Остановка алгоритма происходит при достижении числа кластеров, заданного пользователем. Для определения степени близости используется критерий, учитывающий число объектов в кластере и расстояние между центроидами.
+
+Существенный недостаток алгоритма Ward --- его время работы. Для кластеризации большого числа объектов на начальных этапах работы требуется осуществить попарный перебор большого числа синглтонов. Авторы статьи \cite{amorim} предлагают устранить этот недостаток при помощи предварительного разбиения объектов. Предварительное разбиение используется как начальное состояние для работы Ward. В алгоритме Ward предлагается начинать рассмотрение с простейших кластеров, состоящих из единственного объекта, в то время как A-Ward использует кластеры, полученные при помощи метода аномальной кластеризации. 
+
+Метод аномальной кластеризации находит и удаляет аномальные кластеры по одному, начиная со всего набора данных, до тех пор пока не останется объектов для рассмотрения. В основе этого метода лежит критерий k-means \cite{k-means}. Аномальным называется такой кластер, который наиболее удалён от центра данных. Центроид аномального кластера обновляется на каждом шаге, в то время как центр данных остаётся неизменным.
+
 \subsection{Алгоритм $ A-Ward_{p\beta} $}
-Доделать по \cite{amorim}
+В реальных приложениях требуется анализировать зашумленные данные, включающие нерелевантные признаки. В этом случае оба алгоритма Ward и A-Ward проявляют себя как непригодные. Снизить влияние нерелевантных признаков позволяет введение весовых коэффициентов. В процессе работы алгоритма для каждого признака вычисляется вес, обратно пропорциональный разбросу признака внутри кластера.
+
+Таким образом, алгоритм  A-Ward$_{p\beta} $ можно рассматривать как обобщение алгортма A-Ward. Основная идея обобщения состоит в том чтобы использовать метрику Минковского произвольной степени, а также назначить каждому признаку в пределах кластера определённый весовой коэффициент, учитывающий разброс этого признака внутри кластера. Параметры $ p $ и $ \beta $ являются степенями Минковского и весовых коэффициентов соответственно.
+
+ Как и в случае с A-Ward, алгоритм A-Ward$_{p\beta} $ использует аномальную кластеризацию для предварительной ``разведки'' структуры данных и снижения времени работы, однако для алгоритма A-Ward$_{p\beta} $ аномальная кластеризация обобщена с учётом новых параметров.
+ 
+
 \subsection{Алгоритм $ BiKM-R $}
-Доделать по \cite{kovaleva}
+	
+Алгоритм bisecting k-means (раздвоение по методу k-средних) разбивает некоторый кластер $ S $ на два, при этом используя критерий минимума средних квадратов. Для инициализации алгоритма требуется указать начальные центроиды $ c_{1} $ и $ c_{2} $. На следующем этапе происходит альтернативная минимизация суммарной квадратичной ошибки, которая осуществляется за два шага. На первом шаге обновляется кластеры, то есть все объекты разделяются на те, которые расположены ближе к центроиду $ c_{1} $ (они образуют кластер $ S1 $ ) и те, которые ближе к $ c_{2} $ (кластер $ S2 $). На втором шаге для кластеров $ S1 $ и $ S2 $ вычисляются новые центориды $ c_{1}' $ и $ c_{2}' $. Процесс повторяется до тех пор пока происходят изменения центроидов кластеров. 
+
+Результат алгоритма раздвоения может сильно зависеть от выбора исходных центроидов. Как правило, рекомендуется случайный выбор, но такое решение обеспечивает нестабильный результат. Как и в случае с агломеративным алгоритмами, метод аномальных кластеров может быть использован для предварительного выявления центроидов рациональным образом.  В такой постановке для инициализации алгоритма раздвоения используются центроиды двух наибольших аномальных кластеров. 
+
+Для остановки алгоритма авторами статьи \cite{kovaleva} предложен новый критерий, основанный на проецировании точек кластеров на произвольные направления. Пусть на некотором этапе работы алгоритма имеется $ S_{k} $ кластеров. Первым шагом генерируются $ s $ случайных векторов $ p_{i},\:i=1,...,s $. Для генерации используется нормальное сферическое распределение со средним в начале координат и $ \sigma^{2}=\dfrac{1}{V} $ , где $ V $ – количество признаков. На втором шаге каждый элемент $ x $ каждого кластера $ S_{k}\:(k=1,...,K) $  проецируется на направления $ p_{i} $, координаты проекции определяются как скалярное произведение: $ x_{t}=<x,p_{t}> $ . Для каждого направления вычисляется функция плотности $ f_{k}^{t} $ по методу ядерной оценки. Если для некоторого кластера $ k $ отношение $ \epsilon_{k} $ числа направлений, для которых функции плотности  $ f_{k}^{t} $ имеют по крайне мере один минимум к общему числу направлений меньше заданного пользователем порога $ \epsilon $ , то кластер $ k $ не разбивается. Для разделения выбирается в первую очередь кластер с наибольшим отношением $ \epsilon_{k}/\epsilon $ . Выбранный кластер разбивается но наиболее глубокому минимуму.  
+
 \subsection{Алгоритм $ dePDDP $}
-Доделать по \cite{kovaleva}
+
+Алгоритм dePDDP (Principal Direction Divisive Partitioning) относится к иерархическим дивизивным и является модифицированной версией алгоритма PDDP \cite{PDDP} . Изначально критерий разделения кластера на две части был относительно простым: предлагалось разделить кластер по главной компоненте на положительную и отрицательную части. Впоследствии эта идея была усовершенствована при помощи правила, учитывающего распределение данных \cite{tas}. Разбиение производится по наиболее глубокому минимуму функции плотности данных, спроецированных на первую главную компоненту. Это правило примечательно тем, что может быть использовано для разрешения двух сопряженных проблем: выбора кластера для разбиения и остановки алгоритма. Для разбиения выбирается кластер с наименьшим минимумом среди всех терминальных кластеров. Если кластер имеет монотонную или выпуклую функцию плотности, то такой кластер не может быть разделен по критерию данного алгоритма. Экспериментально было показано, что алгоритм, работающий на описанных принципах эффективно решает задачу кластеризации как на реальных данных, так и на синтетических. 
+Оценка функции плотности осуществляется по методу ядерной оценки.
+
 
 \section{Примеры работы с программой}
 \subsection{Нормализация}
@@ -1148,254 +1008,244 @@
 
 В данном разделе рассматривается пример нормализации признаков обучающего файла \texttt{smartphones.dat} с центрированием по среднему и масштабированием по полуразмаху. 
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	\toprule
 	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Запустить бинарный\\ файл программы\\}}
-	\end{tableitem}
-	
-	Дважды нажать левой кнопкой мыши (ЛКМ) на значке \texttt{INDACT.exe} &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runexe}}
-	\\
-	\midrule
-	
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Открыть диалог\\ загрузки файла\\}}
-	\end{tableitem}
-	
-	Последовательно нажать в главном меню пункты \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Open}}. &  \raisebox{-\totalheight}{\includegraphics[trim={0 200 172 0 0},clip,width=0.65\textwidth]{img/fileopen}}
-	\\
-	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выбрать текстовый\\файл с данными\\}}
-	\end{tableitem}
-	
-	В файловом диалоге выбрать загружаемый файл \texttt{INDACT/example/} \texttt{smartphones.dat} и нажать кнопку \menubox{\texttt{Open}}.  &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/filedialog.png}}
-	\\	
-	\midrule
-	
-%	\pagebreak
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Убедиться что\\ файл загружен}}
-	\end{tableitem}
-	
-	Посмотреть, что вкладка ``\texttt{Raw Data}'' заполнилась данными из файла. &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/loadeddata.png}}
-	\\
-	\midrule
-	
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Установить признак\\} \texttt{name} \textit{как индекс}}
-	\end{tableitem}
-	
-	Отрыть контекстное меню ПКМ и выбрать \menubox{\texttt{Set}} $\Rightarrow$ \menubox{\texttt{As Index}}  &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/asindex}}
-	\\
-	\midrule
-	
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Убедиться что\\ признак выставился}}
-	\end{tableitem}
-	
-	Результат выполнения предыдущей операции показан на рисунке справа. Теперь числовые индексы заменены названиями телефонов. &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/asindexcompleted.png}}
-	\\
-	\midrule
-	
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Удалить\\ признак } \texttt{vendor}}
-	\end{tableitem}
-	
-	Вызвать контекстное меню на признаке \texttt{vendor} при помощи ПКМ и выбрать пункт \menubox{\texttt{Delete}}. &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/deletevendor.png}}
-	\\
-	\midrule
-	
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Убедиться что\\ признак удалён}}
-	\end{tableitem}
-	
-	Результат удаления признака \texttt{vendor} показан на рисунке справа. Видно, что признак \texttt{vendor} больше не отображается во вкладке ``\texttt{Raw Data}'' &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/deletevendorresult.png}}
-	\\
+	\begin{titem}{Запустить бинарный файл программы}
+		Дважды нажать левой кнопкой мыши (ЛКМ) на значке \texttt{INDACT.exe} 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runexe}} \\
 	
 	\midrule
-	
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Открыть окно\\ нормализации}}
-	\end{tableitem}
-	
-	Выбрать в главном меню пункты \menubox{\texttt{Settings}} $ \Rightarrow $ \menubox{\texttt{Normalization}}.
-	&  \raisebox{-\totalheight}
-	{\includegraphics[width=0.65\textwidth]{img/opennormalizationdialogexample}}
-	\\
-	\midrule
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выставить \\параметры\\ нормализации}}
-	\end{tableitem}
-	
-	Выставить параметры нормализации как показано на рисунке справа. Переключатель ``\texttt{Normalization disabled}'' должен быть снят, значение \texttt{Center} выбрано \texttt{Mean}, а значение \texttt{Range} --- \texttt{Semi range}. Подтвердить ввод, нажав \menubox{\texttt{OK}}. 
-	&  \raisebox{-\totalheight}
-	{\includegraphics[width=0.65\textwidth]{img/normmeansemirange}}
-	\\
-	\midrule
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Запустить \\нормализацию \\всех признаков }}
-	\end{tableitem}
-	
-	Для запуска нормализации всех признаков сразу, требуется в главном меню выбрать \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Data}}  $ \Rightarrow $  \menubox{\texttt{Normalize All}}.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallexample}}
-	\\	
+	\begin{titem}{Открыть диалог загрузки файла}
+			Последовательно нажать в главном меню пункты \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Open}}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[trim={0 200 172 0 0},clip,width=0.65\textwidth]{img/fileopen}} \\
 	
 	\midrule
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Подтвердить\\ нормализацию\\категориального\\ признака}}
-	\end{tableitem}
-	
-	Так как данные включают в себя категориальный признак \texttt{stype}, то программа запросит подтверждение разложения признака по количеству уникальных значений. Нажать кнопку \menubox{\texttt{OK}}.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/approvenominalexample}}
-	\\
+	\begin{titem}{Выбрать текстовый файл с данными}
+		В файловом диалоге выбрать загружаемый файл \texttt{INDACT/example/} \texttt{smartphones.dat} и нажать кнопку \menubox{\texttt{Open}}.  
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/filedialog.png}} \\	
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть \\результат}}
-	\end{tableitem}
+	\begin{titem}{Убедиться что файл загружен}
+		Посмотреть, что вкладка ``\texttt{Raw Data}'' заполнилась данными из файла.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/loadeddata.png}} \\
 	
-	После нормализации признаков результат будет отображен во вкладке ``\texttt{Normalized Data}''
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresultexample}}
-	\\
+	\midrule
+	\begin{titem}{Установить признак \texttt{name} как индекс}		
+		Отрыть контекстное меню ПКМ и выбрать \menubox{\texttt{Set}} $\Rightarrow$ \menubox{\texttt{As Index}}  
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/asindex}} \\
+	
+	\midrule
+	\begin{titem}{Убедиться что признак выставился}
+		Результат выполнения предыдущей операции показан на рисунке справа. Теперь числовые индексы заменены названиями телефонов. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/asindexcompleted.png}} \\
+	
+	\midrule
+	\begin{titem}{Удалить признак \texttt{vendor}}		
+		Вызвать контекстное меню на признаке \texttt{vendor} при помощи ПКМ и выбрать пункт \menubox{\texttt{Delete}}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/deletevendor.png}} \\
+	
+	\midrule
+	\begin{titem}{Убедиться что признак удалён}
+		Результат удаления признака \texttt{vendor} показан на рисунке справа. Видно, что признак \texttt{vendor} больше не отображается во вкладке ``\texttt{Raw Data}'' 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/deletevendorresult.png}} \\
+	
+	\midrule
+	\begin{titem}{Открыть окно нормализации}
+		Выбрать в главном меню пункты \menubox{\texttt{Settings}} $ \Rightarrow $ \menubox{\texttt{Normalization}}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/opennormalizationdialogexample}} \\
+	
+	\midrule
+	\begin{titem}{Выставить параметры нормализации}
+		Выставить параметры нормализации как показано на рисунке справа. Переключатель ``\texttt{Normalization disabled}'' должен быть снят, значение \texttt{Center} выбрано \texttt{Mean}, а значение \texttt{Range} --- \texttt{Semi range}. Подтвердить ввод, нажав \menubox{\texttt{OK}}. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normmeansemirange}} \\
+
+	\midrule	
+	\begin{titem}{Запустить нормализацию всех признаков }
+		Для запуска нормализации всех признаков сразу, требуется в главном меню выбрать \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Data}}  $ \Rightarrow $  \menubox{\texttt{Normalize All}}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallexample}} \\	
+	
+	\midrule
+	\begin{titem}{Подтвердить нормализацию категориального признака}
+		Так как данные включают в себя категориальный признак \texttt{stype}, то программа запросит подтверждение разложения признака по количеству уникальных значений. Нажать кнопку \menubox{\texttt{OK}}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/approvenominalexample}} \\
+	
+	\midrule
+	\begin{titem}{Посмотреть результат}
+		После нормализации признаков результат будет отображен во вкладке ``\texttt{Normalized Data}''
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresultexample}} \\
 	
 	\bottomrule
 \end{tabularx}
 
 \subsubsection{Нормализация с центрированием по Минковскому и масштабированием по стандартному отклонению}
+\label{subsubseq:example_norm2}
 Теперь рассмотрим пример нормализации данных из демонстрационного примера с центрированием Минковского.
 
-\setcounter{tableitem}{0}
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	\toprule
 	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Запустить программу\\ и загрузить файл}}
-	\end{tableitem}
-	
-	
-	& 	\parbox[t]{12cm}{ \vphantom{нечто} Выполнить пункты 1--9 из предыдущего примера (\ref{subsubseq:example_norm1}).}
-	\\
-	\midrule
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Выставить параметры \\нормализации}}
-	\end{tableitem}
-	
-	Выставить параметры нормализации как показано на рисунке справа. Переключатель ``\texttt{Normalization disabled}'' должен быть снят, значение Center выбрано \texttt{Minkowski Center}, величина \texttt{Minkowski Power} выставлена равной \texttt{1.5}, а параметр \texttt{Range} выбран \texttt{Standard deviation}.
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normminkowski}}
-	\\
-	\midrule
-	
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Нормализовать все\\признаки}}
-	\end{tableitem}
-		
-	& 	\parbox[t]{12cm}{ \vphantom{нечто} Выполнить пункты 11--12 из предыдущего примера (\ref{subsubseq:example_norm1}).}
-	\\
+	\begin{titem}{Запустить программу и загрузить файл}
+	\end{titem}
+	& 	\parbox[t]{12cm}{ \vphantom{нечто} Выполнить пункты 1--9 из предыдущего примера (\ref{subsubseq:example_norm1}).} \\
 	
 	\midrule
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть \\результат}}
-	\end{tableitem}
+	\begin{titem}{Выставить параметры нормализации}
+		Выставить параметры нормализации как показано на рисунке справа. Переключатель ``\texttt{Normalization disabled}'' должен быть снят, значение Center выбрано \texttt{Minkowski Center}, величина \texttt{Minkowski Power} выставлена равной \texttt{1.5}, а параметр \texttt{Range} выбран \texttt{Standard deviation}.
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normminkowski}} \\
 	
-	После нормализации признаков результат будет отображён во вкладке ``\texttt{Normalized Data}''
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresultexamplemink}}
-	\\
+	\midrule
+	\begin{titem}{Нормализовать все признаки}
+	\end{titem}
+	& 	\parbox[t]{12cm}{ \vphantom{нечто} Выполнить пункты 11--12 из предыдущего примера (\ref{subsubseq:example_norm1}).} \\
 	
+	\midrule
+	\begin{titem}{Посмотреть результат}
+		После нормализации признаков результат будет отображён во вкладке ``\texttt{Normalized Data}''
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresultexamplemink}} \\
 	
 	\bottomrule	
 \end{tabularx}
+
 
 \subsection{Кластеризация}
 \subsubsection{Кластеризация с автоматическим выбором числа кластеров}
 \label{subsubsec:clustering_example1}
 Рассмотрим пример кластеризации с использованием метода, который предусматривает автоматическое вычисление числа кластеров в процессе работы. Используем для этого процедуру нормализации проиллюстрированную ранее. Выберем типичные значения параметров нормализации: центрирование по среднему, масштабирование полуразмахом (см. \ref{subsubseq:example_norm1}). 
-\setcounter{tableitem}{0}
+
+
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	\toprule
 	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Запустить программу,\\ загрузить файл и\\	нормализовать \\признаки}}
-	\end{tableitem}
-	
-	Выполнить все пункты из первого примера (\ref{subsubseq:example_norm1}).
-	
-	& \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresultexample}}
-	\\
-	\midrule
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Открыть окно\\кластеризации}}
-	\end{tableitem}
-	
-	Пред запуском кластеризации потребуется задать общие параметры процедуры, по которым программа выберет конкретный алгоритм. Для этого необходимо из главного меню выбрать: \menubox{\texttt{Run}} $\Rightarrow$ \menubox{\texttt{Clustering}}. 
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runclusteringexample1}}
-	
-	\\
+	\begin{titem}{Запустить программу, загрузить файл и нормализовать признаки}
+		Выполнить все пункты из первого примера(\ref{subsubseq:example_norm1}). Для кластеризации требуются нормализованные признаки.
+	\end{titem}
+	& \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresultexample}} \\
 	
 	\midrule
-	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Установить параметры алгоритма кластеризации}}
-	\end{tableitem}
-	
-	Установить параметры кластеризации как показано на рисунке справа. В группе регулирующей число кластеров установить переключатель \texttt{Minimum of density} для выбора числа кластеров по минимуму функции плотности. Степень Минковского установит равно 2, отметив соответствующий переключатель. Веса признаков в данном примере не используются. Нажать \menubox{\texttt{OK}}. 
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clusteringdialogexample1.png}}
-	
-	\\
+	\begin{titem}{Открыть окно кластеризации}
+		Пред запуском кластеризации потребуется задать общие параметры процедуры, по которым программа выберет конкретный алгоритм. Для этого необходимо из главного меню выбрать: \menubox{\texttt{Run}} $\Rightarrow$ \menubox{\texttt{Clustering}}. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runclusteringexample1}} \\
 	
 	\midrule
+	\begin{titem}{Установить параметры алгоритма кластеризации}
+		Установить параметры кластеризации как показано на рисунке справа. В группе регулирующей число кластеров установить переключатель \texttt{Minimum of density} для выбора числа кластеров по минимуму функции плотности. Степень Минковского установить равной 2, отметив соответствующий переключатель. Веса признаков в данном примере не используются. Нажать \menubox{\texttt{OK}}. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clusteringdialogexample1.png}} \\
 	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Дождаться завершения кластеризации}}
-	\end{tableitem}
+	\midrule
+	\begin{titem}{Дождаться завершения кластеризации}
+		Когда алгоритм закончит работу, появится окно, изображённое справа. Если в окне нажать кнопку \menubox{\texttt{Show Details}} то появится дополнительная информация о выбранном алгоритме и времени работы. Нажать кнопку  \menubox{\texttt{OK}}.
+	\end{titem}
+	 &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/resultinfo.png}} \\		
 	
-	 Когда алгоритм закончит работу, появится окно, изображённое справа. Если в окне нажать кнопку \menubox{\texttt{Show Details}} то появится дополнительная информация о выбранном алгоритме и времени работы. Нажать кнопку  \menubox{\texttt{OK}}.
-	 &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/resultinfo.png}}
-	 \\		
+	\midrule
+	\begin{titem}{Посмотреть кластерную принадлежность}
+		После завершения кластеризации во вкладке ``\texttt{Normalized Data}'' будет заполнен столбец \texttt{Cluster\#} как показано на рисунке справа.	
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clustercolumnexample1}} \\		
 	
 	
 	\midrule
+	\begin{titem}{Сгенерировать отчёт}
+		Для генерации отчёта в главном меню выбрать \menubox{\texttt{Report}} $\Rightarrow$ \menubox{\texttt{Show}} (см. \ref{subsec:report}).	
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/generatereportclusteringexample1}} \\		
 	
-	\begin{tableitem}
-		\parbox[t]{4.5cm}{\textit{Посмотреть кластерную\\ принадлежность}}
-	\end{tableitem}
+	\midrule
+	\begin{titem}{Посмотреть отчёт}
+		Вид отчёта показан на рисунке справа. Сверху показана таблица интегрального представления, а снизу --- текстовый отчёт.  
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/reporttableclusteringexample1}}
 	
-	После завершения кластеризации во вкладке ``\texttt{Normalized Data}'' будет заполнен столбец \texttt{Cluster\#} как показано на рисунке справа.	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clustercolumnexample1}}
-	\\		
+	\raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/textreportclusteringexample2}} \\	
 	
 	
 	\bottomrule
 \end{tabularx}
 
+\newpage
 \subsubsection{Кластеризация с явно заданным числом кластеров}
-Доделать аналогично \ref{subsubsec:clustering_example1}
 
+Если известно конкретное число кластеров входящих в состав данных, можно применить методы, подразумевающие явный ввод с клавиатуры. Например, число кластеров позволяет задать метод A-Ward (см. раздел \ref{subsec:a-ward}).
+
+\noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
+	\toprule
+	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
+	\toprule
+	
+	\begin{titem}{Запустить программу, загрузить файл и нормализовать признаки}
+		Выполнить все пункты из второго примера (\ref{subsubseq:example_norm2}). Для кластеризации требуются нормализованные признаки. Для данного примера используется нормализация с центрированием Минковского.
+	\end{titem}
+	& \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresultexamplemink}} \\
+	
+	\midrule
+	\begin{titem}{Открыть окно кластеризации}
+		Пред запуском кластеризации потребуется задать общие параметры процедуры, по которым программа выберет конкретный алгоритм. Для этого необходимо из главного меню выбрать: \menubox{\texttt{Run}} $\Rightarrow$ \menubox{\texttt{Clustering}}. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runclusteringexample1}} \\
+	
+	\midrule
+	\begin{titem}{Установить параметры алгоритма кластеризации}
+		Установить параметры кластеризации как показано на рисунке справа. В группе регулирующей число кластеров установить переключатель \texttt{Set explicitly} для ввода числа кластеров с клавиатуры. Ввести число кластеров 10. Степень Минковского установить равной 1.5, отметив переключатель \texttt{p=}. Для назначения кластер-специфичных весов выбрать переключатель \texttt{Cluster-specific weights} (см. \cite{amorim}). Нажать \menubox{\texttt{OK}}. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clusteringdialogexample2}} \\
+	
+	\midrule
+	\begin{titem}{Дождаться завершения кластеризации}
+		Когда алгоритм закончит работу, появится окно, изображённое справа. Если в окне нажать кнопку \menubox{\texttt{Show Details}} то появится дополнительная информация о выбранном алгоритме и времени работы. Нажать кнопку  \menubox{\texttt{OK}}.
+	\end{titem}
+	& \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clusteringfinishedexample2}} \\		
+	
+	\midrule
+	\begin{titem}{Посмотреть кластерную принадлежность}
+		После завершения кластеризации во вкладке ``\texttt{Normalized Data}'' будет заполнен столбец \texttt{Cluster\#} как показано на рисунке справа.	
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clustercolumnexample2}} \\		
+	
+	\midrule
+	\begin{titem}{Сгенерировать отчёт}
+		Для генерации отчёта в главном меню выбрать \menubox{\texttt{Report}} $\Rightarrow$ \menubox{\texttt{Show}} (см. \ref{subsec:report}).	
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/generatereportclusteringexample2}} \\		
+	
+	\midrule
+	\begin{titem}{Посмотреть отчёт}
+		Вид отчёта показан на рисунке справа. Сверху показана таблица интегрального представления, а снизу --- текстовый отчёт. Как видно из интегрального отчёта, некоторые кластеры не представительны, поэтому в реальных условиях, возможно, следовало бы рассмотреть другие значения параметров. 
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/reporttableclusteringexample2}}
+	
+	\raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/textreportclusteringexample2}} \\	
+
+\bottomrule
+\end{tabularx}
 
 % glossary
-\renewcommand{\glossaryname}{\centerline{\MakeUppercase{Словарь терминов (добавить примеры)}}}
+%\renewcommand{\glossaryname}{\centerline{\MakeUppercase{Словарь терминов (добавить примеры)}}}
 
-\clearpage
+%\clearpage
 \setlist[description]{leftmargin=!, labelwidth=-0.5em} % Change for glossaries
 \glsaddall
 

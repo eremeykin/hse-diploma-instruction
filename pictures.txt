@@ -1,5 +1,0 @@
-normdialog
-plotview
-generationwindow
-runclusteringwindow
-tableresultwindow

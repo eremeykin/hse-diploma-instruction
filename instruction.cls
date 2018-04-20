@@ -21,6 +21,9 @@
 \RequirePackage{caption} % to tune subcaptions
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{subfigure}
+\RequirePackage{xspace} % space after command
+\RequirePackage{nameref}
+\RequirePackage{float}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%   LAYOUT   %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,6 +68,27 @@
 	{\begin{longtable}{p{2cm}p{10cm}}}%
 		{\end{longtable}}%
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%   TABLES   %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% define new column types (see package array)
+\newcolumntype{Z}{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}X} 
+\newcolumntype{M}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% table counter (don't remember why)
+\newcounter{titem}[table]
+\newenvironment{titem}[2][]{\refstepcounter{titem}\par\medskip
+	\noindent \textit{
+		\begin{flushleft}
+			\begin{hyphenrules}{nohyphenation}
+				\thetitem.~#1~#2\newline
+			\end{hyphenrules}
+		\end{flushleft}
+	}}{\medskip}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%   CAPTIONS   %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,9 +181,138 @@
 \robustify{\dirbox}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%     MISC    %%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\labelenumii{\theenumi.\arabic{enumii}.}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%   COMMANDS  %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\parsedate #1:20#2#3#4#5#6#7#8\empty{#6#7/#4#5/20#2#3}
 \def\moddate#1{\expandafter\parsedate\pdffilemoddate{#1}\empty}
+
+\newcommand{\kmeans}{k-средних\xspace}
+
+\newcommand{\AWard}{\mbox{A-Ward}\xspace}
+\newcommand{\AWardpb}{\mbox{A-Ward$ _{p\beta} $}\xspace}
+\newcommand{\BiKMR}{\mbox{Bi K-Means R}\xspace}
+\newcommand{\dePDDP}{dePDDP\xspace}
+\newcommand{\IKmeans}{\mbox{IK-Means}\xspace}
+\newcommand{\Ctrl}{\texttt{Ctrl}}
+
+\newcommand{\SysName}{INDACT\xspace}
+\newcommand{\Python}{Python\xspace}
+\newcommand{\BinCatalog}{\texttt{\SysName}\xspace}
+\newcommand{\ExeFile}{\texttt{\SysName.exe}\xspace}
+\newcommand{\DataCatalog}{\texttt{data}\xspace}
+\newcommand{\SettingsFile}{\texttt{settings.ini}\xspace}
+\newcommand{\SampleFile}{\texttt{smartphones.dat}\xspace}
+\newcommand{\fullref}[1]{\ref{#1} \nameref{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%   TIKZ  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetikzlibrary{calc}
+
+
+\makeatletter
+\newcommand{\gettikzxy}[3]{%
+	\tikz@scan@one@point\pgfutil@firstofone#1\relax
+	\edef#2{\the\pgf@x}%
+	\edef#3{\the\pgf@y}%
+}
+\makeatother
+
+\def\regnoter[#1](#2)(#3:#4:#5){%
+	% Synopsis
+	% \regnoter[draw options](left buttom)(text:end x:end y)
+	\gettikzxy{(#2)}{\ax}{\ay}
+	\draw[#1] (\ax, \ay) rectangle  node[pos=.5] {\textbf{#3}} ++(0.8,0.8);
+	\draw[#1] (\ax+8mm  , \ay+4mm) -- (\ax+12mm,\ay+4mm) -- (#4,#5);
+}
+
+
+\def\regnoteb[#1](#2)(#3:#4:#5){%
+	\gettikzxy{(#2)}{\ax}{\ay}
+	\draw[#1] (\ax, \ay) rectangle  node[pos=.5] {\textbf{#3}} ++(0.8,0.8);
+	\draw[#1] (\ax+4mm  , \ay) -- (\ax+4mm,\ay-4mm) -- (#4,#5);
+}
+
+\def\regnotel[#1](#2)(#3:#4:#5){%
+	\gettikzxy{(#2)}{\ax}{\ay}
+	\draw[#1] (\ax, \ay) rectangle  node[pos=.5] {\textbf{#3}} ++(0.8,0.8);
+	\draw[#1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#4,#5);
+}
+
+\def\regnote[#1](#2)(#3){%
+	\gettikzxy{(#2)}{\ax}{\ay}
+	\filldraw[fill=white, draw=black, #1] (\ax, \ay) rectangle  node[pos=.5] {\textbf{#3}} ++(0.8,0.8);
+}
+
+\def\regnotermulti[#1](#2)(#3:#4:#5:#6:#7:#8:#9){%
+	\gettikzxy{(#2)}{\ax}{\ay}
+	\draw[#1] (\ax, \ay) rectangle  node[pos=.5] {\textbf{#3}} ++(0.8,0.8);
+	\draw[#1] (\ax+8mm  , \ay+4mm) -- (\ax+12mm,\ay+4mm) -- (#4,#5);
+	\draw[#1] (\ax+8mm  , \ay+4mm) -- (\ax+12mm,\ay+4mm) -- (#6,#7);
+	\draw[#1] (\ax+8mm  , \ay+4mm) -- (\ax+12mm,\ay+4mm) -- (#8,#9);
+}
+
+\def\regnotelmulti[#1](#2)(#3:#4:#5:#6:#7:#8:#9){%
+	\gettikzxy{(#2)}{\ax}{\ay}
+	\filldraw[fill=white, draw=black, #1] (\ax, \ay) rectangle  node[pos=.5] {\textbf{#3}} ++(0.8,0.8);
+	\filldraw[fill=white, draw=black, #1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#4,#5);
+	\filldraw[fill=white, draw=black, #1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#6,#7);
+	\filldraw[fill=white, draw=black, #1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#8,#9);
+}
+
+
+\makeatletter
+\def\grd@save@target#1{%
+	\def\grd@target{#1}}
+\def\grd@save@start#1{%
+	\def\grd@start{#1}}
+\tikzset{
+	grid with coordinates/.style={
+		to path={%
+			\pgfextra{%
+				\edef\grd@@target{(\tikztotarget)}%
+				\tikz@scan@one@point\grd@save@target\grd@@target\relax
+				\edef\grd@@start{(\tikztostart)}%
+				\tikz@scan@one@point\grd@save@start\grd@@start\relax
+				\draw[minor help lines] (\tikztostart) grid (\tikztotarget);
+				\draw[major help lines] (\tikztostart) grid (\tikztotarget);
+				\grd@start
+				\pgfmathsetmacro{\grd@xa}{\the\pgf@x/1cm}
+				\pgfmathsetmacro{\grd@ya}{\the\pgf@y/1cm}
+				\grd@target
+				\pgfmathsetmacro{\grd@xb}{\the\pgf@x/1cm}
+				\pgfmathsetmacro{\grd@yb}{\the\pgf@y/1cm}
+				\pgfmathsetmacro{\grd@xc}{\grd@xa + \pgfkeysvalueof{/tikz/grid with coordinates/major step}}
+				\pgfmathsetmacro{\grd@yc}{\grd@ya + \pgfkeysvalueof{/tikz/grid with coordinates/major step}}
+				\foreach \x in {\grd@xa,\grd@xc,...,\grd@xb}
+				\node[anchor=north] at (\x,\grd@ya) {\pgfmathprintnumber{\x}};
+				\foreach \y in {\grd@ya,\grd@yc,...,\grd@yb}
+				\node[anchor=east] at (\grd@xa,\y) {\pgfmathprintnumber{\y}};
+			}
+		}
+	},
+	minor help lines/.style={
+		help lines,
+		step=\pgfkeysvalueof{/tikz/grid with coordinates/minor step}
+	},
+	major help lines/.style={
+		help lines,
+		line width=\pgfkeysvalueof{/tikz/grid with coordinates/major line width},
+		step=\pgfkeysvalueof{/tikz/grid with coordinates/major step}
+	},
+	grid with coordinates/.cd,
+	minor step/.initial=.2,
+	major step/.initial=1,
+	major line width/.initial=2pt,
+}
+\makeatother

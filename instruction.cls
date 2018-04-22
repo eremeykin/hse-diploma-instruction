@@ -17,6 +17,7 @@
 \RequirePackage{array}
 \RequirePackage{tabularx,booktabs} 
 \RequirePackage{fancyhdr}
+%\RequirePackage{ltxtable}
 \RequirePackage{ltablex} % for pagebreak in tabularx
 \RequirePackage{caption} % to tune subcaptions
 \RequirePackage[most]{tcolorbox}
@@ -26,6 +27,7 @@
 \RequirePackage{float}
 \RequirePackage{wrapfig}
 \RequirePackage{adjustbox}
+\RequirePackage{lipsum}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%   LAYOUT   %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,29 +105,60 @@
 	}{		
 	}
 	
-\newcounter{stepc}	
-\newenvironment{step}[2][]{
-	% begin
-	\noindent
-	\minipage{\textwidth}
-	
-	\begin{wrapfigure}{r}{0.65\textwidth}
-		\includegraphics[width=0.65\textwidth]{#1}
-		\vspace{-40pt}
-	\end{wrapfigure}
-	
+
+\newtcolorbox{mybox}[1][]{%	
+%	sharp corners,colframe=white,opacityback=0, left=0mm, height from=6.5cm to 20cm, #1
+	sharp corners, left=0mm, height from=6.5cm to 20cm, #1
+}
+
+\newtcolorbox{mysmallbox}[1][]{%	
+%	sharp corners,colframe=white,opacityback=0, left=0mm, height from=1.5cm to 20cm, #1
+	sharp corners, left=0mm, height from=1.5cm to 20cm, #1
+}
+
+
+\NewEnviron{ist}[2]{
 	\refstepcounter{stepc}
-	\noindent \textit{
-			\begin{hyphenrules}{nohyphenation}
-				\begin{flushleft}\thestepc.~#2 \end{flushleft}
-			\end{hyphenrules}
-		} 			
-	}{
-	% end
-	\endminipage
-	
+	\noindent\begin{minipage}{\textwidth}
+				\begin{mybox}
+					\begin{wrapfigure}{r}{0.65\textwidth}
+						\includegraphics[width=0.65\textwidth]{#1}
+						\vspace{-40pt}
+					\end{wrapfigure}
+					\noindent \textit{
+						\begin{hyphenrules}{nohyphenation}
+							\begin{flushleft}\thestepc.~#2 \end{flushleft}
+						\end{hyphenrules}
+					} 			
+					\noindent\BODY
+				\end{mybox}
+			\end{minipage}
+			\noindent\rule{\textwidth}{0.1mm}
+			}
+
+
+\NewEnviron{istt}[2]{
+	\refstepcounter{stepc}
+	\noindent\begin{minipage}{\textwidth}
+		\begin{mysmallbox}
+			\begin{wrapfigure}{r}{0.65\textwidth}
+				\vspace{0.33cm}
+				#1
+				\vspace{-40pt}
+			\end{wrapfigure}
+			\noindent \textit{
+				\begin{hyphenrules}{nohyphenation}
+					\begin{flushleft}\thestepc.~#2 \end{flushleft}
+				\end{hyphenrules}
+			} 			
+			\noindent\BODY
+		\end{mysmallbox}
+	\end{minipage}
 	\noindent\rule{\textwidth}{0.1mm}
-	}
+}
+
+
+\newcounter{stepc}	
 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%   CAPTIONS   %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -248,7 +281,9 @@
 \newcommand{\DataCatalog}{\texttt{data}\xspace}
 \newcommand{\SettingsFile}{\texttt{settings.ini}\xspace}
 \newcommand{\SampleFile}{\texttt{smartphones.dat}\xspace}
+\newcommand{\SampleFileFull}{\texttt{\SysName/data/smartphones.dat}\xspace}
 \newcommand{\fullref}[1]{\ref{#1} \nameref{#1}}
+
 
 \newcommand{\menu}[1]{\menubox{\texttt{#1}}}
 \newcommand{\button}[1]{\menubox{\texttt{#1}}}

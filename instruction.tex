@@ -211,7 +211,7 @@
 	\caption{Основные элементы пользовательского интерфейса}
 	\label{fig:gui}
 \end{figure}
-
+Цифры на рисунке означают:
 \begin{enumerate}
 	\item Главное меню, элемент интерфейса, содержащий основные команды
 	\item Меню File, содержит пункты:
@@ -245,9 +245,9 @@
 	\item Кнопка ``Свернуть окно''
 	\item Кнопка ``Развернуть окно''		
 	\item Кнопка ``Закрыть окно''
-	\item Иконка ``Загрузить данные'', дублирует соответствующий пункт меню
-	\item Иконка ``Настройки'' вызывает диалог настроек нормализации
-	\item Иконка включения/выключения нормализации
+	\item \label{itm:load-ico} Иконка ``Загрузить данные'', дублирует соответствующий пункт меню
+	\item \label{itm:settings}Иконка ``Настройки'' вызывает диалог настроек нормализации
+	\item \label{itm:norm-button}Иконка включения/выключения нормализации
 	\item Иконка нормализации нескольких признаков сразу
 	\item Иконка очистки нормализованных признаков
 	\item Названия признаков
@@ -255,8 +255,8 @@
 	\item Строка состояния, выводит информацию о выполняемом действии
 	\item Текущие параметры нормализации
 	\item Последний результат кластеризации
-	\item Панель с исходными данными 
-	\item Панель с нормализованными данными 
+	\item \label{itm:panel-raw} Панель с исходными данными 
+	\item \label{itm:panel-norm} Панель с нормализованными данными 
 \end{enumerate}
 
 \subsubsection{Контекстное меню}
@@ -308,7 +308,7 @@
 	\caption{Диалог установки параметров нормализации}
 	\label{fig:normdialog}
 \end{figure}
-
+Цифры на рисунке означают:
 \begin{enumerate}
 	\item Переключатель вкл./выкл. нормализацию
 	\item Кнопка закрытия окна
@@ -327,17 +327,17 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.6\textwidth]{img2/svd-plot.png}};
-	\regnoter[thin](-1.4,7.6)(1:0.5:8);
-	\regnoter[thin](-1,9.2)(2:1.2:8);
-	\regnoteb[thin](1.4,9.2)(3:1.8:8);
-	\regnoteb[thin](2.3,9.2)(4:2.7:8);
-	\regnotel[thin](4,9.2)(5:3.3:8);
-	\regnotel[thin](6.5,9.2)(6:5.6:8);
-	\regnotel[thin](9.2,9.2)(7:8.5:8.6);
-	\regnotel[thin](10.6,6.8)(8:9.5:8.6);
-	\regnotel[thin](10.6,5.4)(9:9.1:8.6);
-	\regnotel[thin](10.6,4.0)(10:7:5);
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.5\textwidth]{img2/svd-plot.png}};
+	\regnoter[thin]( -1.4 , 6.2)(1:0.4:6.6);
+	\regnoter[thin]( -1   , 7.7)(2:1:6.6);
+	\regnoteb[thin](  1.1 , 7.7)(3:1.5:6.6);
+	\regnoteb[thin](  2.4 , 7.7)(4:2.3:6.6);
+	\regnotel[thin](    4 , 7.7)(5:2.8:6.6);
+	\regnotel[thin](  5.5 , 7.7)(6:4.7:6.6);
+	\regnotel[thin](  9.2 , 7.7)(7:7.1:7.1);
+	\regnotel[thin](  9.2 , 5.8)(8:7.9:7.1);
+	\regnotel[thin](  9.2 , 4.4)(9:7.5:7.1);
+	\regnotel[thin](  9.2 , 3.0)(10:7:5);
 %	\draw (-2,0) to[grid with coordinates] (18,10);
 	\end{tikzpicture}
 	\caption{Окно графического вывода}
@@ -345,6 +345,7 @@
 \end{figure}
 
 
+Цифры на рисунке означают:
 \begin{enumerate}
 	\item Кнопка восстановления исходного автоматического положения и масштаба
 	\item Кнопка возврата к предыдущему виду (после масштабирования или смещения)
@@ -383,7 +384,7 @@
 	\label{fig:gen-data-dialog}
 \end{figure}
 
-
+Цифры на рисунке означают:
 \begin{enumerate}
 	\item Кнопки управления графиком (см. \ref{subsec:plot-view})
 	\item Интерактивная графическая иллюстрация результата
@@ -401,62 +402,138 @@
 
 \subsubsection{Окно запуска кластеризации}
 
-Для запуска кластеризации от пользователя требуется выставить ряд параметров в соответствии со значениями которых после будет автоматически выбран подходящий алгоритм кластеризации. На рисунке \ref{fig:runclusteringwindow} показано окно для ввода этих параметров.
+В меню каждый алгоритм, реализованный в программе выделен отдельно. Для задания параметров алгоритма предусмотрены диалоговые окна. В данном разделе будут рассмотрены окна для настройки всех видов алгоритмов, реализованных в программе. 
 
-\begin{figure}[h!]
+\textbf{\AWard}
+
+Окно для настройки параметров алгоритма \AWard изображено на рисунке \ref{fig:param-dialog-a-ward}.
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{img/runclusteringwindow}
-	\caption{Окно запуска кластеризации}
-	\label{fig:runclusteringwindow}
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.45\textwidth]{img2/param-dialog-a-ward.png}};
+	\regnotermulti[thin](-2,2)(1:0.7:2.1:0.7:2.7:0.7:2.7);
+	\regnotel[thin](8,4)(2:6.2:2.6);
+	\regnotel[thin](8,2.6)(3:6.2:2.2);
+	\regnotel[thin](8,1.2)(4:6.2:1.6);
+	\regnotel[thin](8,-0.2)(5:6.6:0.6);
+	\regnotel[thin](6,-1.2)(6:4.5:0.6);
+%	\draw (0,0) to[grid with coordinates] (18,10);
+	\end{tikzpicture}
+	\caption{Окно запуска \AWard}
+	\label{fig:param-dialog-a-ward}
 \end{figure}
 
-
+Цифры на рисунке означают:
 \begin{enumerate}
-	\item Группа опций, отвечающая за число кластеров
-	\item Переключатель определения числа кластеров по критерию A-Ward (подробнее см. \cite{mirkin_formula_8})
-	\item Переключатель поиска числа кластеров в процессе кластеризации по принципу минимума функции плотности \cite{kovaleva}
-	\item Переключатель явного задание числа кластеров 
-	\item Поле ввода для явного задания числа кластеров 
-	\item Группа опций для установки степени Минковского (см. \cite{amorim})
-	\item Переключатель, задающий степень Минковского равной 2
-	\item Переключатель явного ввода степени Минковского с клавиатуры
-	\item Поле ввода для степени Минковского
-	\item Автоматически вычисляемая степень Минковского (в будующих версиях)
-	\item Группа опций, определяющих веса признаков
-	\item Переключатель отключающий веса признаков
-	\item Переключатель включающий индивидуальные веса для каждого признака (см. \cite{amorim}, $A-Ward_{p\beta}$)
-	\item Переключатель включающий одинаковые веса в пределах всех данных, но задаваемых для каждого признака индивидуально 
-	\item Таблица для ввода весов признаков
-	\item Кнопка подтверждения ввода
-	\item Кнопка отмены
-	\item Кнопка закрытия окна
+	\item Переключатель критерия остановки алгоритма
+	\item Поле ввода максимального числа 
+	\item Поле ввода параметра специального критерия
+	\item Поле ввода порогового значения для отсечения небольших аномальных кластеров
+	\item Кнопка отмены ввода
+	\item Кнока подтверждения ввода
 \end{enumerate}
 
+\textbf{\AWardpb}
+
+Для запуска алгоритма \AWardpb использутеся окно, показанное на рисунке \ref{fig:param-dialog-a-ward-pb}.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.45\textwidth]{img2/param-dialog-a-ward-pb.png}};
+	\regnotel[thin](8,6)(1:6:4.6);
+	\regnotel[thin](8,4.6)(2:5.4:4);
+	\regnotel[thin](8,3.2)(3:6.5:4);
+	\regnotel[thin](8,1.8)(4:6:3.4);
+	\regnotel[thin](8,0.4)(5:6:2.8);
+	
+	\regnotel[thin](8,-1.0)(6:6.6:0.6);
+	\regnotel[thin](6,-1.2)(7:4.5:0.6);
+%	\draw (0,0) to[grid with coordinates] (18,10);
+	\end{tikzpicture}
+	\caption{Окно запуска \AWardpb}
+	\label{fig:param-dialog-a-ward-pb}
+\end{figure}
+
+Цифры на рисунке означают:
+\begin{enumerate}
+	\item Поле ввода максимального числа кластеров
+	\item Поле ввода степени Минковского
+	\item Кнопка для запуска автоматического подбора степени Минковского
+	\item Поле ввода степени весов признаков $ \beta $
+	\item Поле ввода порогового значения для отсечения небольших аномальных кластеров
+	\item Кнопка отмены ввода
+	\item Кнока подтверждения ввода
+\end{enumerate}
+
+\textbf{\BiKMR}
+
+Для запуска алгоритма \BiKMR требуется ввод всего одного параметра, соответствующее окно показано на рисунке \ref{fig:param-dialog-bikmr}.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.4\textwidth]{img2/param-dialog-bikmr.png}};
+	\regnotel[thin](7.5,2.5)(1:5.5:1.8);
+	\regnotel[thin](6.5,-1.2)(2:5.6:0.6);
+	\regnotel[thin](4.5,-1.2)(3:3.5:0.6);
+%	\draw (0,0) to[grid with coordinates] (18,10);
+	\end{tikzpicture}
+	\caption{Окно запуска \BiKMR}
+	\label{fig:param-dialog-bikmr}
+\end{figure}
+
+Цифры на рисунке означают:
+\begin{enumerate}
+	\item Поле ввода параметра $ \epsilon $
+	\item Кнопка отмены ввода
+	\item Кнока подтверждения ввода
+\end{enumerate}
+
+\textbf{\dePDDP}
+
+Для запуска алгоритма \dePDDP не требуется вводить никаких параметров, он запускается сразу же после выбора соответствующего пункта меню.
+
+\textbf{\IKmeans}
+
+Окно запуска алгоритма \IKmeans такое же как и для \AWard.
 
 
 \subsubsection{Окно таблицы результатов}
+В программе результат кластеризации может быть представлен в табличном виде или в виде текстового отчёта.  Эти окна могут быть открыты только после выполнения одного из алгоритмов кластеризации. Окно табличного представления информации о полученных кластерах изображено на рисунке \ref{fig:table-report}. Значение таблицы соответствует среднему значению данного признака в данном кластере. Если это значение существенно больше общего среднего по признаку, то ячейка выделяется красным цветом, если существенно меньше --- синим.
 
-Окно таблицы результатов служит для интегрального представления полученной кластерной структуры. Это окно может быть вызвано после выполнения шага кластеризации (см. \ref{subsec:report}). Значение таблиы соответствует среднему значению данного признака в данном кластере. Если это значение существенно больше общего среднего по признаку, то ячейка выделяется красным цветом, если существенно меньше --- синим.
-
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.55\textwidth]{img/tableresultwindow}
-	\caption{Окно таблицы результатов}
-	\label{fig:tableresultwindow}
+	\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.6\textwidth]{img2/table-report.png}};
+	\regnotermulti[thin](-1.5,2.5)(1:0.6:3.4:0.6:1.8:0.6:1.8);
+	\regnotelmulti[thin](4,5.2)(2:1.8:3.8:3.5:3.8:3.5:3.8);
+	\regnoter[thin](-1.5,1.1)(3:0.6:0.8);
+	\regnoter[thin](6,5.2)(4:8.6:3.8);
+%	\draw (0,0) to[grid with coordinates] (10,6);
+	\end{tikzpicture}
+	\caption{Окно табличного отчёта}
+	\label{fig:table-report}
 \end{figure}
 
+
+Цифры на рисунке означают:
 \begin{enumerate}
-	\item Название признаков
+	\item Названия признаков
 	\item Номера кластеров
 	\item Строка средних значений по всем данным
 	\item Столбец числа объектов в кластере
 \end{enumerate}
-
-
+Рисунок \ref{fig:text-report} изображает окно текстового отчёта, которое содержит единственный элемент для просмотра текста.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{img2/text-report.png}
+	\caption{Окно текстового отчёта}
+	\label{fig:text-report}
+\end{figure}
 
 \newpage
 \section{Описание операций}
-
 
 \subsection{Запуск программы}
 Для работы с программой требуется запустить процесс OC, который отображает графический интерфейс и взаимодействует с пользователем. Действия этой операции приведены в таблице ниже.
@@ -469,13 +546,13 @@
 	\begin{titem}{Запустить бинарный файл программы}
 		Дважды нажать левой кнопкой мыши (ЛКМ) на значке \texttt{INDACT.exe} 
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runexe}} \\
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/run-exe.png}} \\
 	
 	\midrule
 	\begin{titem}{Дождаться запуска}
-		Подождать, пока произойдёт инициализация среды выполнения Python. Открытие чёрного консольного окна, означает что установлена отладочная версия программы. Его не следует закрывать.   
+		Подождать, пока произойдёт инициализация среды выполнения Python. Открытие чёрного консольного окна, означает что установлена отладочная версия программы. Его не следует закрывать. Запуск программы занимает не более 3-4 сек.   
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/gui}} \\
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/empty-window.png}} \\
 		
 	\bottomrule
 \end{tabularx}	
@@ -484,7 +561,7 @@
 \subsection{Загрузка исходных данных}
 \label{subsec:dataload}
 
-Загрузка данных необходима для того чтобы подать программе файл, который содержит таблицу данных. Формат файла должен удовлетворять набору требований, перечисленных в разделе ``\ref{subsec:req} Требования к файлу исходных данных''. 
+Загрузка данных необходима для того чтобы подать программе файл, который содержит таблицу данных. Формат файла должен удовлетворять набору требований, перечисленных в разделе \fullref{subsec:req}. 
 
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
@@ -492,21 +569,21 @@
 	
 	\midrule
 	\begin{titem}{Открыть диалог загрузки файла}
-			Для открытия диалога загрузки файла необходимо последовательно нажать в главном меню пункты \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Open}}. 
+			Для открытия диалога загрузки файла необходимо последовательно нажать в главном меню пункты \menu{File} $ \Rightarrow $ \menu{Load data file}. Того же результата можно достичь нажатием иконки \includegraphics[scale=0.05]{img2/folder-ico.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:load-ico})
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[trim={0 200 172 0 0},clip,width=0.65\textwidth]{img/fileopen}}	\\
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/open-file-menu.png}}	\\
 
 	\midrule
 	\begin{titem}{Выбрать текстовый файл с данными}
-			В файловом диалоге необходимо выбрать загружаемый файл и нажать кнопку \menubox{\texttt{Open}}. Например, для загрузки демонстрационного примера следует выбрать файл \texttt{INDACT/example/} \texttt{smartphones.dat} 
+			В стандартном файловом диалоге необходимо выбрать загружаемый файл и нажать кнопку \button{Open}. Например, для загрузки демонстрационного примера следует выбрать файл \texttt{INDACT/data/} \SampleFile 
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/filedialog.png}} \\	
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/open-smartphones.png}} \\	
 
 	\midrule
 	\begin{titem}{Проверить загрузку исходного файла}
 		После выполнения предыдущего пункта будет произведена загрузка файла и отображение его содержимого в виде таблицы в интерфейсе программы. Пользователю следует убедиться, что загружен правильный файл, объекты и признаки отображаются верно. На рисунке справа показан загруженный файл \texttt{smartphones.dat} 
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/loadeddata.png}}	\\
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/load-result.png}}	\\
 	\bottomrule
 \end{tabularx}	
 
@@ -514,35 +591,42 @@
 \label{sec:norm}
 \subsubsection{Установка параметров нормализации}
 
-Назначение и параметры нормализации описаны в разделе ``\ref{subsec:norm} Нормализация''.
+Назначение и параметры нормализации описаны в разделе \fullref{subsec:norm}, примеры установки различных настроек нормализации описаны в разделе \ref{subsubseq:example_norm1}.
 
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	\midrule
 	\begin{titem}{Открыть диалог нормализации}
-		Диалог нормализации можно открыть выбрав в главном меню пункты \menubox{\texttt{Settings}} $ \Rightarrow $ \menubox{\texttt{Normalization}}.
+		Диалог нормализации можно открыть щелчком ЛКМ на иконке \includegraphics[scale=0.1]{img2/settings.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:settings})
+		
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[trim={0 50 0 0},clip,width=0.65\textwidth]{img/opennormalizationdialog.png}}\\
-	
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/click-norm.png}}\\
 	\midrule
+
 	\begin{titem}{Включить нормализацию}
-		Чтобы включить нормализацию требуется снять отметку с пункта ``\texttt{Normalization disabled}''. Выполнение этого действия снимет блокировку с полей параметров нормализации.
+		Чтобы включить нормализацию требуется установить флажок ``\texttt{Normalization enabled}'' в открывшемся окне настроек нормализации. 
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizationdialog.png}} \\
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/norm-settings-dialog.png}} \\
 
 	\midrule
 	\begin{titem}{Выставить параметры}
-		Для нормализации данных необходимо задать центр и диапазон нормализации. Эти параметры выбираются из выпадающих списков. Для завершения настройки нормализации нажать кнопку \menubox{\texttt{OK}}. Пример установки параметров приведён в разделе \ref{subsubseq:example_norm1}. 
+		Для нормализации данных необходимо задать центр и диапазон нормализации. Эти параметры выбираются из выпадающих списков. Нажать \button{Ok}. 
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizationenableddialog.png}} \\
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/norm-settings-dialog-edit.png}} \\
+
+	\midrule
+	\begin{titem}{Убедиться что нормализация включена}
+		После применения настроек нормализации следует убедиться, что кнопка нормализации успешно включилась (см. рисунок \ref{fig:gui} обозначение \ref{itm:norm-button}).
+	\end{titem}
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/norm-button-enabled.png}} \\
 	\bottomrule
 \end{tabularx}
 
 \newpage
 \subsubsection{Нормализация одного признака}
 \label{subsubsec:onenorm}
-После настройки параметров нормализации необходимо выбрать какие признаки требуется нормализовать. Только выбранные признаки будут участвовать в кластеризации. В программе предусмотрено три возможности для выбора признаков: выбор по одному, выбор всех сразу и удаление по одному. 
+После настройки параметров нормализации необходимо выбрать какие признаки требуется нормализовать. Только выбранные признаки будут участвовать в кластеризации. В программе предусмотрено четыре возможности для выбора признаков: выбор по одному, выбор нескольких сразу и удаление по одному или сразу нескольких. 
 
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
@@ -550,47 +634,62 @@
 	\midrule
 	
 	\begin{titem}{Выбрать признак для нормализации}
-		Для выбора одного признака необходимо найти столбец признака во вкладке ``\texttt{Raw Data}'' и нажать на нем правой кнопкой мыши (ПКМ). В контекстном меню выбрать пункт \menubox{\texttt{Normalize}}. На примере показана операция нормализации признака \texttt{stype}.
+		Для выбора одного признака необходимо найти столбец признака на панели исходных данных (рисунок \ref{fig:gui} обозначение \ref{itm:panel-raw}) и нажать на нем правой кнопкой мыши (ПКМ). В контекстном меню выбрать пункт \menu{Normalize}. На примере показана операция нормализации признака \texttt{stype}.
 	\end{titem}
 	&  \raisebox{-\totalheight}
-	{\includegraphics[trim={0 0 0 0},clip,width=0.65\textwidth]{img/normalizeonefeature.png}}
+	{\includegraphics[trim={0 0 0 0},clip,width=0.65\textwidth]{img2/norm-one-feature.png}}
 	\\
 	
 	\midrule
 	\begin{titem}{(При необходимости) Подтвердить нормализацию категориального признака}
-			Если был выбран категориальный признак (в примере \texttt{stype}), то программа запросит подтверждение разложения признака на бинарные. В случае согласия произойдёт добавление бинарных признаков, отвечающих за наличие каждого из значений категориального признака \textit{ и их нормализация}.
+			Если был выбран категориальный признак (в примере \texttt{stype}), то программа запросит подтверждение разложения признака. % на бинарные. 
+%			В случае согласия произойдёт добавление бинарных признаков, отвечающих за наличие каждого из значений категориального признака \textit{ и их нормализация}.
 	\end{titem}
-	 &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/approvenominal.png}} \\
-
+	 &  \raisebox{-\totalheight}{\includegraphics[width=0.45\textwidth]{img2/norm-one-approve.png}} \\
 	\midrule
+	
 	\begin{titem}{Просмотр вида таблицы}
-			После выбора признака, он будет перенесён из вкладки ``\texttt{Raw Data}'' во вкладку ``\texttt{Normalized Data}'' и к нему будут применены выбранные настройки нормализации. Дополнительно во вкладке  ``\texttt{Normalized Data}'' будет отображён столбец ``\texttt{Cluster\#}'', который будет оставаться заполненным символами ``\texttt{?}'' до тех пор, пока не будет выполнен шаг кластеризации (см. верхний рисунок, нормализация признака \texttt{price}). Сказанное выше справедливо и для номинального признака (например \texttt{stype}), но стоит иметь ввиду что соответствующие бинарные признаки будут названы \texttt{stype[значение признака]} (как показано на нижнем рисунке)
+			После выбора признака, он будет перенесён из вкладки на панель нормализованных данных и к нему будут применены выбранные настройки нормализации. Дополнительно на панели нормализованных данных будет отображён столбец ``\texttt{Cluster\#}'', который будет оставаться заполненным символами ``\texttt{?}'' до тех пор, пока не будет выполнен шаг кластеризации (см. верхний рисунок, нормализация признака \texttt{rom}). Сказанное выше справедливо и для номинального признака (например \texttt{stype}), но стоит иметь ввиду что соответствующие бинарные признаки будут названы \texttt{stype[значение признака]} (как показано на нижнем рисунке)
 	\end{titem}
-	 &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizedonefeature.png}} 
-
-		 \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizedonenominalfeature.png}}	\\
+	 &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/norm-one-done.png}} 
+		\medskip
+		\raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/norm-one-done-nominal.png}}	\\
 	\bottomrule
 \end{tabularx}
 
 \newpage
-\subsubsection{Нормализация всех признаков сразу}
+\begin{steps}
+	\begin{step}[img2/norm-several.png]{Запустить нормализацию нескольких признаков}
+		Для запуска нормализации нескольких признаков сразу, требуется нажать иконку \includegraphics[scale=0.1]{img2/norm_all.png}. Откроется окно выбора признаков. 	
+	\end{step}
+	\begin{step}[img2/norm-several.png]{Выбрать признаки для нормализации}
+		В открытом окне выбрать те признаки, которые требуется нормализовать. По умолчанию отмечены признаки, которые не являются категориальными. Если требуется нормализовать в том числе категориальные, их следует отметить. Подтвердить выбор признаков, нажав кнопку \button{Ok}. Если имеется хотя бы один категориальный признак, то программа запросит подтверждение разложения признака по количеству уникальных значений. В случае согласия программа представит номинальный признак с помощью бинарных.
+	\end{step}
+\end{steps}
 
-Если признаков много и нормализовать их по одному долго, то можно воспользоваться функцией нормализации всех признаков сразу.
+
+
+\newpage
+\subsubsection{Нормализация нескольких признаков сразу}
+
+Если признаков много и нормализовать их по одному долго, то можно воспользоваться функцией нормализации нескольких признаков сразу.
 
 \noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
 	\toprule
 	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
 	\midrule
-	\begin{titem}{Запустить нормализацию всех признаков }
-			Для запуска нормализации всех признаков сразу, требуется в главном меню выбрать \menubox{\texttt{File}} $ \Rightarrow $ \menubox{\texttt{Data}}  $ \Rightarrow $  \menubox{\texttt{Normalize All}}.
+	\begin{titem}{Запустить нормализацию нескольких признаков }
+			Для запуска нормализации нескольких признаков сразу, требуется нажать иконку \includegraphics[scale=0.1]{img2/norm_all.png}. Откроется окно выбора признаков. 
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeall.png}} \\
+	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img2/norm-several.png}} \\
 	
 	\midrule
-	\begin{titem}{(При необходимости) Подтвердить нормализацию категориального признака}
+	\begin{titem}{Выбрать признаки для нормализации}
+		В открытом окне выбрать те признаки, которые требуется нормализовать. По умолчанию отмечены признаки, которые не являются категориальными. Если требуется нормализовать в том числе категориальные, их следует отметить. Подтвердить выбор признаков, нажав кнопку \button{Ok}.
+		
 		Если имеется хотя бы один категориальный признак, то программа запросит подтверждение разложения признака по количеству уникальных значений. В случае согласия программа представит номинальный признак с помощью бинарных.
 	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/approvenominal.png}}	\\
+	&  \includegraphics[width=0.55\textwidth]{img2/select-features-dialog.png}	\\
 
 	\midrule
 	\begin{titem}{Посмотреть результат}	
@@ -1210,5 +1309,6 @@
 \nocite{amorim} \nocite{ward} \nocite{boley} \nocite{tasoulis} \nocite{kovaleva} \nocite{mirkin}
 \addcontentsline{toc}{section}{Список литературы}
 \bibliography{bibliography}
+
 
 \end{document} 

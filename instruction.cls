@@ -24,6 +24,8 @@
 \RequirePackage{xspace} % space after command
 \RequirePackage{nameref}
 \RequirePackage{float}
+\RequirePackage{wrapfig}
+\RequirePackage{adjustbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%   LAYOUT   %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -78,7 +80,7 @@
 \newcolumntype{M}{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}X}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-% table counter (don't remember why)
+% table counter for table steps 
 \newcounter{titem}[table]
 \newenvironment{titem}[2][]{\refstepcounter{titem}\par\medskip
 	\noindent \textit{
@@ -87,9 +89,44 @@
 				\thetitem.~#1~#2\newline
 			\end{hyphenrules}
 		\end{flushleft}
-	}}{\medskip}
-
-
+	}}
+	
+\newenvironment{steps}{
+		% begin def
+		\setcounter{stepc}{0}
+		\noindent\begin{tabularx}{\linewidth}{p{0.2\linewidth}C{0.75\linewidth}}
+		\toprule
+		\textbf{Действие/Описание} &\textbf{Интерфейс} \\
+		\midrule
+		\end{tabularx}
+		\vspace{-15pt}
+	}{		
+	}
+	
+\newcounter{stepc}	
+\newenvironment{step}[2][]{
+	% begin
+	\noindent
+	\minipage{\textwidth}
+	
+	\begin{wrapfigure}{r}{0.65\textwidth}
+		\includegraphics[width=0.65\textwidth]{#1}
+		\vspace{-40pt}
+	\end{wrapfigure}
+	
+	\refstepcounter{stepc}
+	\noindent \textit{
+			\begin{hyphenrules}{nohyphenation}
+				\begin{flushleft}\thestepc.~#2 \end{flushleft}
+			\end{hyphenrules}
+		} 			
+	}{
+	% end
+	\endminipage
+	
+	\noindent\rule{\textwidth}{0.1mm}
+	}
+		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%   CAPTIONS   %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -213,6 +250,9 @@
 \newcommand{\SampleFile}{\texttt{smartphones.dat}\xspace}
 \newcommand{\fullref}[1]{\ref{#1} \nameref{#1}}
 
+\newcommand{\menu}[1]{\menubox{\texttt{#1}}}
+\newcommand{\button}[1]{\menubox{\texttt{#1}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%   TIKZ  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -265,9 +305,9 @@
 \def\regnotelmulti[#1](#2)(#3:#4:#5:#6:#7:#8:#9){%
 	\gettikzxy{(#2)}{\ax}{\ay}
 	\filldraw[fill=white, draw=black, #1] (\ax, \ay) rectangle  node[pos=.5] {\textbf{#3}} ++(0.8,0.8);
-	\filldraw[fill=white, draw=black, #1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#4,#5);
-	\filldraw[fill=white, draw=black, #1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#6,#7);
-	\filldraw[fill=white, draw=black, #1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#8,#9);
+	\draw[#1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#4,#5);
+	\draw[#1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#6,#7);
+	\draw[#1] (\ax , \ay+4mm) -- (\ax-4mm,\ay+4mm) -- (#8,#9);
 }
 
 

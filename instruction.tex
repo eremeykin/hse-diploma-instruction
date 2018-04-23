@@ -918,115 +918,77 @@
 \label{subsubsec:clustering_example1}
 Рассмотрим пример кластеризации с использованием метода, который предусматривает автоматическое вычисление числа кластеров в процессе работы. Используем для этого процедуру нормализации проиллюстрированную ранее. Выберем типичные значения параметров нормализации: центрирование по среднему, масштабирование полуразмахом (см. \ref{subsubseq:example_norm1}). 
 
+\begin{steps}
+	\begin{ist}{img2/norm-tutorial-result.png}{Запустить программу, загрузить файл и нормализовать признаки}
+		Выполнить все пункты из первого примера(\ref{subsubseq:example_norm1}). Для кластеризации требуются нормализованные признаки.		
+	\end{ist}
+	\begin{ist}{img2/tutorial-run-bikmr.png}{Открыть окно кластеризации}
+		Для запуска кластеризации требуется открыть окно с настройками кластеризации. В данном примере рассматривается автоматическое определение числа кластеров, поэтому в главном меню выберем \menu{Run} $ \Rightarrow $ \menu{Bi KMeans-R}. 
+	\end{ist}
+	\begin{ist}{img2/tutorial-bikmr.png}{Задать параметр алгоритма}
+		Алгоритм \BiKMR требует задания единственного параметра $ \epsilon $. В данном случае рекомендуется оставить значение по умолчанию. Подтвердить ввод кнопкой \button{Ok}
+	\end{ist}
+	\begin{ist}{img2/tutorial-bikmr-done.png}{Дождатся завершения работы алгоритма}
+		Выполнение алгоритма тербует некоторого времени, после завершения работы краткая инфромация о последнем запущенном алгоритме и времени работы будет отображена в строке состояния. Например, на рисунке справа видно, что алгоритм \BiKMR при $ \epsilon=0.32 $ завершился за 6,23 сек.
+	\end{ist}
+	\begin{ist}{img2/tutorial-bikmr-done.png}{Посмотреть кластерную принадлежность}
+		После завершения алгоритма в столбце \texttt{Cluster \#} будут показаны метки кластерной принадлежности объектов, как показано на рисунке справа. Следует иметь ввиду, что алгоритм \BiKMR использует в работе случайно сгенерированные направления, поэтому для различных запусков при разной инициализации генератора случайных чисел результаты могут отличаться.
+	\end{ist}
+	
+	\begin{ist}{img2/tutorial-set-c.png}{Установить метку \texttt{C}}
+		Для того чтобы обозначть, что полученное разбиение будет теперь определять цвет на диаграммах, требуется выставить метку \texttt{C} на столбец \texttt{Cluster \#}. Для этого в контекстном меню выбрать соответствующие пункты, как показано на рисунке справа.
+	\end{ist}
+	\begin{ist}{img2/tutorial-plot-svd.png}{Построить диаграмму SVD}
+		Для общей оценки полученного разбиения можно построить SVD диаграмму. Для этого в главном меню выбрать \menu{Plot} $ \Rightarrow $ \menu{SVD} $ \Rightarrow $ \menu{Normalized}.
+	\end{ist}
+	\begin{ist}{img2/tutorial-plot-svd-select-features.png}{Выбрать признаки}
+		Для построения диаграммы выбрать все признаки, которые участвовали в кластеризации.
+	\end{ist}
+	\begin{ist}{img2/tutorial-svd-result.png}{Посмотреть SVD диаграмму}
+		Полученная диаграмма показана на рисунке справа. \vspace{7cm}
+	\end{ist}
+	\begin{ist}{img2/tutorial-gen-text-report.png}{Сгенерировать текстовый отчёт}
+		Для генерации текстового отчёта в главном меню выбрать пункты \menu{Report} $ \Rightarrow $ \menu{Text}.
+	\end{ist}
+	\begin{ist}{img2/tutorial-gen-text-select-features.png}{Выбрать признаки}
+		В открывшемся окрне выбрать признаки, по которые будут включены в отчёт. Для быстрого выбора всех признаков, можно нажать кнопку \button{All}. Подтвердить выбор кнопкой \button{Ok}.
+	\end{ist}
+	\begin{ist}{img2/tutorial-view-text-report.png}{Посмотреть текстовый отчёт}
+		Посмотреть текстовый отчет в открывшемся окне. Вид окна показан на рисунке справа.
+	\end{ist}
+	\begin{ist}{img2/tutorial-gen-table-report.png}{Сгенерировать табличный отчёт}
+		Для генерации текстового отчёта в главном меню выбрать пункты \menu{Report} $ \Rightarrow $ \menu{Table}.
+	\end{ist}
+	
+	\begin{ist}{img2/tutorial-view-table-report.png}{Посмотреть табличный отчёт}
+		Посмотреть табличный отчет в открывшемся окне.
+	\end{ist}
 
-\noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
-	\toprule
-	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
-	\toprule
-	
-	\begin{titem}{Запустить программу, загрузить файл и нормализовать признаки}
-		Выполнить все пункты из первого примера(\ref{subsubseq:example_norm1}). Для кластеризации требуются нормализованные признаки.
-	\end{titem}
-	& \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresultexample}} \\
-	
-	\midrule
-	\begin{titem}{Открыть окно кластеризации}
-		Пред запуском кластеризации потребуется задать общие параметры процедуры, по которым программа выберет конкретный алгоритм. Для этого необходимо из главного меню выбрать: \menubox{\texttt{Run}} $\Rightarrow$ \menubox{\texttt{Clustering}}. 
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runclusteringexample1}} \\
-	
-	\midrule
-	\begin{titem}{Установить параметры алгоритма кластеризации}
-		Установить параметры кластеризации как показано на рисунке справа. В группе регулирующей число кластеров установить переключатель \texttt{Minimum of density} для выбора числа кластеров по минимуму функции плотности. Степень Минковского установить равной 2, отметив соответствующий переключатель. Веса признаков в данном примере не используются. Нажать \menubox{\texttt{OK}}. 
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clusteringdialogexample1.png}} \\
-	
-	\midrule
-	\begin{titem}{Дождаться завершения кластеризации}
-		Когда алгоритм закончит работу, появится окно, изображённое справа. Если в окне нажать кнопку \menubox{\texttt{Show Details}} то появится дополнительная информация о выбранном алгоритме и времени работы. Нажать кнопку  \menubox{\texttt{OK}}.
-	\end{titem}
-	 &  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/resultinfo.png}} \\		
-	
-	\midrule
-	\begin{titem}{Посмотреть кластерную принадлежность}
-		После завершения кластеризации во вкладке ``\texttt{Normalized Data}'' будет заполнен столбец \texttt{Cluster\#} как показано на рисунке справа.	
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clustercolumnexample1}} \\		
-	
-	
-	\midrule
-	\begin{titem}{Сгенерировать отчёт}
-		Для генерации отчёта в главном меню выбрать \menubox{\texttt{Report}} $\Rightarrow$ \menubox{\texttt{Show}} (см. \ref{subsec:report}).	
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/generatereportclusteringexample1}} \\		
-	
-	\midrule
-	\begin{titem}{Посмотреть отчёт}
-		Вид отчёта показан на рисунке справа. Сверху показана таблица интегрального представления, а снизу --- текстовый отчёт.  
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/reporttableclusteringexample1}}
-	
-	\raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/textreportclusteringexample2}} \\	
-	
-	
-	\bottomrule
-\end{tabularx}
+\end{steps}
 
 \newpage
 \subsubsection{Кластеризация с явно заданным числом кластеров}
 
 Если известно конкретное число кластеров входящих в состав данных, можно применить методы, подразумевающие явный ввод с клавиатуры. Например, число кластеров позволяет задать метод A-Ward (см. раздел \ref{subsec:a-ward}).
 
-\noindent\begin{tabularx}{\textwidth}{p{5.1cm}X}
-	\toprule
-	\textbf{Действие/Описание}& \textbf{Интерфейс}  \\
-	\toprule
+\begin{steps}
+	\begin{ist}{img2/mink-tutorial-result.png}{Запустить программу, загрузить файл и нормализовать признаки}
+		Выполнить все пункты из второго примера по нормализации (\ref{subsubseq:example_norm2}). Для кластеризации требуются нормализованные признаки. Для данного примера используются нормализация с центрированием Минковского.
+	\end{ist}
+	\begin{ist}{img2/tutorial-run-awardpb.png}{Выбрать алгоритм \AWardpb}
+		В главном меню выбрать пункт \menu{Run} $ \Rightarrow $ \menu{\AWardpb}
+	\end{ist}
+	\begin{ist}{img2/tutorial-awardpb-settings.png}{Задать настройки}
+		В открывшемся диалоговом окне задать настройки алгоритма как показано на рисунке справа. Подтвердить ввод кнопкой \button{Ok}.\vspace{5cm}
+	\end{ist}
+	\begin{ist}{img2/tutorial-awardpb-result.png}{Дождаться результата кластеризации}
+		Выполнение алгоритма тербует некоторого времени, после завершения работы краткая инфромация о последнем запущенном алгоритме и времени работы будет отображена в строке состояния. Например, на рисунке справа видно, что алгоритм \AWardpb при заданных параметрах завершился за 0,93 сек.
+	\end{ist}
+	\begin{istt}{Повторить операции 5--14 из предыдущего примера \ref{subsubsec:clustering_example1} }{Построить диаграммы и отчёты}
+	\end{istt}
 	
-	\begin{titem}{Запустить программу, загрузить файл и нормализовать признаки}
-		Выполнить все пункты из второго примера (\ref{subsubseq:example_norm2}). Для кластеризации требуются нормализованные признаки. Для данного примера используется нормализация с центрированием Минковского.
-	\end{titem}
-	& \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/normalizeallresultexamplemink}} \\
-	
-	\midrule
-	\begin{titem}{Открыть окно кластеризации}
-		Пред запуском кластеризации потребуется задать общие параметры процедуры, по которым программа выберет конкретный алгоритм. Для этого необходимо из главного меню выбрать: \menubox{\texttt{Run}} $\Rightarrow$ \menubox{\texttt{Clustering}}. 
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/runclusteringexample1}} \\
-	
-	\midrule
-	\begin{titem}{Установить параметры алгоритма кластеризации}
-		Установить параметры кластеризации как показано на рисунке справа. В группе регулирующей число кластеров установить переключатель \texttt{Set explicitly} для ввода числа кластеров с клавиатуры. Ввести число кластеров 10. Степень Минковского установить равной 1.5, отметив переключатель \texttt{p=}. Для назначения кластер-специфичных весов выбрать переключатель \texttt{Cluster-specific weights} (см. \cite{amorim}). Нажать \menubox{\texttt{OK}}. 
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clusteringdialogexample2}} \\
-	
-	\midrule
-	\begin{titem}{Дождаться завершения кластеризации}
-		Когда алгоритм закончит работу, появится окно, изображённое справа. Если в окне нажать кнопку \menubox{\texttt{Show Details}} то появится дополнительная информация о выбранном алгоритме и времени работы. Нажать кнопку  \menubox{\texttt{OK}}.
-	\end{titem}
-	& \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clusteringfinishedexample2}} \\		
-	
-	\midrule
-	\begin{titem}{Посмотреть кластерную принадлежность}
-		После завершения кластеризации во вкладке ``\texttt{Normalized Data}'' будет заполнен столбец \texttt{Cluster\#} как показано на рисунке справа.	
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/clustercolumnexample2}} \\		
-	
-	\midrule
-	\begin{titem}{Сгенерировать отчёт}
-		Для генерации отчёта в главном меню выбрать \menubox{\texttt{Report}} $\Rightarrow$ \menubox{\texttt{Show}} (см. \ref{subsec:report}).	
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/generatereportclusteringexample2}} \\		
-	
-	\midrule
-	\begin{titem}{Посмотреть отчёт}
-		Вид отчёта показан на рисунке справа. Сверху показана таблица интегрального представления, а снизу --- текстовый отчёт. Как видно из интегрального отчёта, некоторые кластеры не представительны, поэтому в реальных условиях, возможно, следовало бы рассмотреть другие значения параметров. 
-	\end{titem}
-	&  \raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/reporttableclusteringexample2}}
-	
-	\raisebox{-\totalheight}{\includegraphics[width=0.65\textwidth]{img/textreportclusteringexample2}} \\	
-
-\bottomrule
-\end{tabularx}
+		
+\end{steps}
 
 % glossary
 %\renewcommand{\glossaryname}{\centerline{\MakeUppercase{Словарь терминов (добавить примеры)}}}

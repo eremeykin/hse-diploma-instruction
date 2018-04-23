@@ -1,24 +1,22 @@
 \glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
 \begin{theglossary}\glossaryheader
 \glsgroupheading{I}\relax \glsresetentrylist %
-\glossentry{INDUCT}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{64}}}\glsgroupskip
+\glossentry{INDACT}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{59}}}\glsgroupskip
 \glsgroupheading{S}\relax \glsresetentrylist %
 \glossentry{SVD}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{64}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{59}}}\glsgroupskip
 \glsgroupheading{Ğ}\relax \glsresetentrylist %
 \glossentry{LKM}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{64}}}%
+		\setentrycounter[]{page}\glsnumberformat{59}}}%
 \glossentry{OZU}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{64}}}%
+		\setentrycounter[]{page}\glsnumberformat{59}}}%
 \glossentry{OS}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{64}}}%
+		\setentrycounter[]{page}\glsnumberformat{59}}}%
 \glossentry{PC}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{64}}}%
+		\setentrycounter[]{page}\glsnumberformat{59}}}%
 \glossentry{PKM}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{64}}}%
+		\setentrycounter[]{page}\glsnumberformat{59}}}%
 \glossentry{PO}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{64}}}%
-\glossentry{SIK}{\glossaryentrynumbers{\relax 
-		\setentrycounter[]{page}\glsnumberformat{64}}}%
+		\setentrycounter[]{page}\glsnumberformat{59}}}%
 \end{theglossary}\glossarypostamble

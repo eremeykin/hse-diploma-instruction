@@ -1,7 +1,7 @@
 This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
 Scanning style file ./instruction.ist.............................done (29 attributes redefined, 0 ignored).
-Scanning input file instruction.glo....done (18 entries accepted, 0 rejected).
-Sorting entries....done (80 comparisons).
-Generating output file instruction.gls....done (44 lines written, 0 warnings).
+Scanning input file instruction.glo....done (19 entries accepted, 0 rejected).
+Sorting entries....done (86 comparisons).
+Generating output file instruction.gls....done (46 lines written, 0 warnings).
 Output written in instruction.gls.
 Transcript written in instruction.glg.

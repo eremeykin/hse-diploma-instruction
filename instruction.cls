@@ -11,7 +11,7 @@
 \RequirePackage{indentfirst} % paragraph indent
 \RequirePackage{bashful} % for version specification
 \RequirePackage[most]{tcolorbox}
-\RequirePackage[acronym]{glossaries} % add glosaries
+\RequirePackage[acronym, nopostdot]{glossaries} % add glosaries
 \RequirePackage{enumitem} % for better alignment
 \RequirePackage{graphicx}
 \RequirePackage{array}

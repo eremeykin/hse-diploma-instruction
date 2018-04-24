@@ -267,6 +267,7 @@
 
 \newcommand{\kmeans}{k-средних\xspace}
 
+\newcommand{\Ward}{\mbox{Ward}\xspace}
 \newcommand{\AWard}{\mbox{A-Ward}\xspace}
 \newcommand{\AWardpb}{\mbox{A-Ward$ _{p\beta} $}\xspace}
 \newcommand{\BiKMR}{\mbox{Bi K-Means R}\xspace}

@@ -28,6 +28,11 @@
 \RequirePackage{wrapfig}
 \RequirePackage{adjustbox}
 \RequirePackage{lipsum}
+\RequirePackage{standalone}
+\RequirePackage{tkz-euclide}
+\usetikzlibrary{shapes,backgrounds}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{snakes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%   LAYOUT   %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

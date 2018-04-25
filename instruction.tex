@@ -4,7 +4,7 @@
 \begin{document} 
 \begin{titlepage}
 	\centering	
-	\texttt {\moddate{\jobname.tex} v3.0}
+	\texttt {\moddate{\jobname.tex} v3.1}
 
 	{\scshape\small Национальный исследовательский университет \\
 		``Высшая школа экономики'' \par}
@@ -33,11 +33,11 @@
 
 %
 %\begin{steps}
-%	\begin{stept}{img2/norm-several.png}{Выбрать признаки для нормализации}
-%		Для запуска нормализации нескольких признаков сразу, требуется нажать иконку \includegraphics[scale=0.1]{img2/norm_all.png}. Откроется окно выбора признаков. 	
+%	\begin{stept}{img/norm-several.png}{Выбрать признаки для нормализации}
+%		Для запуска нормализации нескольких признаков сразу, требуется нажать иконку \includegraphics[scale=0.1]{img/norm_all.png}. Откроется окно выбора признаков. 	
 %	\end{stept}
 %	
-%	\begin{stept}{img2/norm-several.png}{Выбрать признаки для нормализации}
+%	\begin{stept}{img/norm-several.png}{Выбрать признаки для нормализации}
 %		В открытом окне выбрать те признаки, которые требуется нормализовать. По умолчанию отмечены признаки, которые не являются категориальными. Если требуется нормализовать в том числе категориальные, их следует отметить. Подтвердить выбор признаков, нажав кнопку \button{Ok}. Если имеется хотя бы один категориальный признак, то программа запросит подтверждение разложения признака по количеству уникальных значений. В случае согласия программа представит номинальный признак с помощью бинарных.
 %	\end{stept}
 %\end{steps}
@@ -196,7 +196,7 @@
 
 \begin{figure}[H]
 	\begin{tikzpicture}
-		\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.8\textwidth]{img2/main-window.png}};
+		\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.8\textwidth]{img/main-window.png}};
 		\regnoter[thin](-1.4,6)(1:0.1:6.4);
 		\regnoter[thin](-1,7.4)(2:0.4:6.4);
 		\regnoteb[thin](0.6,8)(3:1:6.4);
@@ -276,7 +276,7 @@
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.35\textwidth]{img2/context-menu.png}
+	\includegraphics[width=0.35\textwidth]{img/context-menu.png}
 	\caption{Контекстное меню признака \texttt{price}}
 	\label{fig:context-menu}
 \end{figure}
@@ -304,7 +304,7 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{img2/norm-dialog.png}};
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.45\textwidth]{img/norm-dialog.png}};
 	\regnoter[thin](-1.4,2.8)(1:0.6:3.2);
 	\regnotel[thin](8,6.5)(2:6.9:5.5);
 	\regnotel[thin](8,4.2)(3:6:4.2);
@@ -339,7 +339,7 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.5\textwidth]{img2/svd-plot.png}};
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.5\textwidth]{img/svd-plot.png}};
 	\regnoter[thin]( -1.4 , 6.2)(1:0.4:6.6);
 	\regnoter[thin]( -1   , 7.7)(2:1:6.6);
 	\regnoteb[thin](  1.1 , 7.7)(3:1.5:6.6);
@@ -377,7 +377,7 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.8\textwidth]{img2/gen-data-dialog.png}};
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.8\textwidth]{img/gen-data-dialog.png}};
 	\regnotelmulti[thin](4,2)(1:0.8:4.2:1.6:4.2:2.5:4.2);
 	\regnotel[thin](14,7)(2:9.4:10.7);
 	\regnotel[thin](14,6)(3:12.4:3.7);
@@ -422,7 +422,7 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.45\textwidth]{img2/param-dialog-a-ward.png}};
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.45\textwidth]{img/param-dialog-a-ward.png}};
 	\regnotermulti[thin](-2,2)(1:0.7:2.1:0.7:2.7:0.7:2.7);
 	\regnotel[thin](8,4)(2:6.2:2.6);
 	\regnotel[thin](8,2.6)(3:6.2:2.2);
@@ -452,7 +452,7 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.45\textwidth]{img2/param-dialog-a-ward-pb.png}};
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.45\textwidth]{img/param-dialog-a-ward-pb.png}};
 	\regnotel[thin](8,6)(1:6:4.6);
 	\regnotel[thin](8,4.6)(2:5.4:4);
 	\regnotel[thin](8,3.2)(3:6.5:4);
@@ -485,7 +485,7 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.4\textwidth]{img2/param-dialog-bikmr.png}};
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.4\textwidth]{img/param-dialog-bikmr.png}};
 	\regnotel[thin](7.5,2.5)(1:5.5:1.8);
 	\regnotel[thin](6.5,-1.2)(2:5.6:0.6);
 	\regnotel[thin](4.5,-1.2)(3:3.5:0.6);
@@ -517,7 +517,7 @@
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.6\textwidth]{img2/table-report.png}};
+	\node[anchor=south west,inner sep=0] (image) at (0,0) {	\includegraphics[width=0.6\textwidth]{img/table-report.png}};
 	\regnotermulti[thin](-1.5,2.5)(1:0.6:3.4:0.6:1.8:0.6:1.8);
 	\regnotelmulti[thin](4,5.2)(2:1.8:3.8:3.5:3.8:3.5:3.8);
 	\regnoter[thin](-1.5,1.1)(3:0.6:0.8);
@@ -539,7 +539,7 @@
 Рисунок \ref{fig:text-report} изображает окно текстового отчёта, которое содержит единственный элемент для просмотра текста.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{img2/text-report.png}
+	\includegraphics[width=0.6\textwidth]{img/text-report.png}
 	\caption{Окно текстового отчёта}
 	\label{fig:text-report}
 \end{figure}
@@ -551,10 +551,10 @@
 Для работы с программой требуется запустить процесс OC, который отображает графический интерфейс и взаимодействует с пользователем. Действия этой операции приведены в таблице ниже.
 
 \begin{steps}
-	\begin{ist}{img2/run-exe.png}{Запустить бинарный файл программы}
+	\begin{ist}{img/run-exe.png}{Запустить бинарный файл программы}
 		Дважды нажать левой кнопкой мыши (ЛКМ) на значке \texttt{INDACT.exe}
 	\end{ist}
-	\begin{ist}{img2/empty-window.png}{Дождаться запуска}
+	\begin{ist}{img/empty-window.png}{Дождаться запуска}
 		Подождать, пока произойдёт инициализация среды выполнения Python. Открытие чёрного консольного окна, означает что установлена отладочная версия программы. Его не следует закрывать. Запуск программы занимает не более 3-4 сек.   
 	\end{ist}
 \end{steps}
@@ -566,14 +566,14 @@
 Загрузка данных необходима для того, чтобы подать программе файл, который содержит таблицу данных. Формат файла должен удовлетворять набору требований, перечисленных в разделе \fullref{subsec:req}. 
 
 \begin{steps}
-	\begin{ist}{img2/open-file-menu.png}{Открыть диалог загрузки файла}
-		Для открытия диалога загрузки файла необходимо последовательно нажать в главном меню пункты \menu{File} $ \Rightarrow $ \menu{Load data file}. Того же результата можно достичь нажатием иконки \includegraphics[scale=0.05]{img2/folder-ico.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:load-ico})
+	\begin{ist}{img/open-file-menu.png}{Открыть диалог загрузки файла}
+		Для открытия диалога загрузки файла необходимо последовательно нажать в главном меню пункты \menu{File} $ \Rightarrow $ \menu{Load data file}. Того же результата можно достичь нажатием иконки \includegraphics[scale=0.05]{img/folder-ico.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:load-ico})
 	\end{ist}
 	
-	\begin{ist}{img2/open-smartphones.png}{Выбрать текстовый файл с данными}
+	\begin{ist}{img/open-smartphones.png}{Выбрать текстовый файл с данными}
 		В стандартном файловом диалоге необходимо выбрать загружаемый файл и нажать кнопку \button{Open}. Например, для загрузки демонстрационного примера следует выбрать файл \texttt{INDACT/data/} \SampleFile 
 	\end{ist}
-	\begin{ist}{img2/load-result.png}{Проверить загрузку исходного файла}
+	\begin{ist}{img/load-result.png}{Проверить загрузку исходного файла}
 		После выполнения предыдущего пункта будет произведена загрузка файла и отображение его содержимого в виде таблицы в интерфейсе программы. Пользователю следует убедиться, что загружен правильный файл, объекты и признаки отображаются верно. На рисунке справа показан загруженный файл \texttt{smartphones.dat} 
 	\end{ist}
 \end{steps}
@@ -585,16 +585,16 @@
 
 Назначение и параметры нормализации описаны в разделе \fullref{subsec:norm}, примеры установки различных настроек нормализации описаны в разделе \ref{subsubseq:example_norm1}.
 \begin{steps}
-	\begin{ist}{img2/click-norm.png}{Открыть диалог нормализации}
-		Диалог нормализации можно открыть щелчком ЛКМ на иконке \includegraphics[scale=0.1]{img2/settings.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:settings})
+	\begin{ist}{img/click-norm.png}{Открыть диалог нормализации}
+		Диалог нормализации можно открыть щелчком ЛКМ на иконке \includegraphics[scale=0.1]{img/settings.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:settings})
 	\end{ist}
-	\begin{ist}{img2/norm-settings-dialog.png}{Включить нормализацию}
+	\begin{ist}{img/norm-settings-dialog.png}{Включить нормализацию}
 		Чтобы включить нормализацию, требуется установить флажок ``\texttt{Normalization enabled}'' в открывшемся окне настроек нормализации.
 	\end{ist}
-	\begin{ist}{img2/norm-settings-dialog-edit.png}{Выставить параметры}
+	\begin{ist}{img/norm-settings-dialog-edit.png}{Выставить параметры}
 		Для нормализации данных необходимо задать центр и диапазон нормализации. Эти параметры выбираются из выпадающих списков. Нажать \button{Ok}.
 	\end{ist}
-	\begin{ist}{img2/norm-button-enabled.png}{Убедиться что нормализация включена}
+	\begin{ist}{img/norm-button-enabled.png}{Убедиться что нормализация включена}
 		После применения настроек нормализации следует убедиться, что кнопка нормализации успешно включилась (см. рисунок \ref{fig:gui} обозначение \ref{itm:norm-button}).	
 	\end{ist}	
 \end{steps}
@@ -605,15 +605,15 @@
 После настройки параметров нормализации необходимо выбрать какие признаки требуется нормализовать. Только выбранные признаки будут участвовать в кластеризации. В программе предусмотрено четыре возможности для выбора признаков: выбор по одному, выбор нескольких сразу и удаление по одному или сразу нескольких. 
 
 \begin{steps}
-	\begin{ist}{img2/norm-one-feature.png}{Выбрать признак для нормализации}
+	\begin{ist}{img/norm-one-feature.png}{Выбрать признак для нормализации}
 		Для выбора одного признака необходимо найти столбец признака на панели исходных данных (рисунок \ref{fig:gui} обозначение 	\ref{itm:panel-raw}) и нажать на нем правой кнопкой мыши (ПКМ). В контекстном меню выбрать пункт \menu{Normalize}. На примере показана операция нормализации признака \texttt{stype}.
 	\end{ist}
 	
-	\begin{ist}{img2/norm-one-approve.png}{(При необходимости) Подтвердить нормализацию категориального признака}
+	\begin{ist}{img/norm-one-approve.png}{(При необходимости) Подтвердить нормализацию категориального признака}
 		Если был выбран категориальный признак (в примере \texttt{stype}), то программа запросит подтверждение разложения признака на бинарные. В случае согласия произойдёт добавление бинарных признаков, отвечающих за наличие каждого из значений категориального признака \textit{ и их нормализация}.
 	\end{ist}
 		
-	\begin{ist}{img2/norm-one-done-dual.png}{Просмотр вида таблицы}
+	\begin{ist}{img/norm-one-done-dual.png}{Просмотр вида таблицы}
 		После выбора признака, он будет перенесён из вкладки на панель нормализованных данных и к нему будут применены выбранные настройки нормализации. Дополнительно на панели нормализованных данных будет отображён столбец ``\texttt{Cluster\#}'', который будет оставаться заполненным символами ``\texttt{?}'' до тех пор, пока не будет выполнен шаг кластеризации (см. верхний рисунок, нормализация признака \texttt{rom}). Сказанное выше справедливо и для номинального признака (например \texttt{stype}), но стоит иметь в виду что соответствующие бинарные признаки будут названы \texttt{stype[значение признака]} (как показано на нижнем рисунке)
 	\end{ist}
 		
@@ -625,13 +625,13 @@
 Если признаков много и нормализовать их по одному долго, то можно воспользоваться функцией нормализации нескольких признаков сразу.
 
 \begin{steps}
-	\begin{ist}{img2/norm-several.png}{Запустить нормализацию нескольких признаков }
-		Для запуска нормализации нескольких признаков сразу, требуется нажать иконку \includegraphics[scale=0.1]{img2/norm_all.png}. Откроется окно выбора признаков.
+	\begin{ist}{img/norm-several.png}{Запустить нормализацию нескольких признаков }
+		Для запуска нормализации нескольких признаков сразу, требуется нажать иконку \includegraphics[scale=0.1]{img/norm_all.png}. Откроется окно выбора признаков.
 	\end{ist}
-	\begin{ist}{img2/select-features-dialog.png}{Выбрать признаки для нормализации}
+	\begin{ist}{img/select-features-dialog.png}{Выбрать признаки для нормализации}
 		В открытом окне выбрать те признаки, которые требуется нормализовать. По умолчанию отмечены признаки, которые не являются категориальными. Если требуется нормализовать в том числе категориальные, их следует отметить. Подтвердить выбор признаков, нажав кнопку \button{Ok}. Если имеется хотя бы один категориальный признак, то программа запросит подтверждение разложения признака по количеству уникальных значений. В случае согласия программа представит номинальный признак с помощью бинарных.
 	\end{ist}		
-	\begin{ist}{img2/norm-several-result.png}{Посмотреть результат}
+	\begin{ist}{img/norm-several-result.png}{Посмотреть результат}
 		После нормализации признаков результат будет отображен на панели нормализованных данных (см. рисунок \ref{fig:gui}, обозначение \ref{itm:panel-norm})
 	\end{ist}
 		
@@ -647,10 +647,10 @@
 Как было отмечено выше, программа позволяет удалять отдельные признаки из как c панели нормализованных данных, так и с панели исходных данных. Эта функция может быть применена для исключения из рассмотрения определённых признаков.
 
 \begin{steps}
-	\begin{ist}{img2/select-to-delete.png}{Выбрать признак для удаления}
+	\begin{ist}{img/select-to-delete.png}{Выбрать признак для удаления}
 		Для удаления одного признака необходимо найти столбец признака в нужной вкладке и нажать на нём ПКМ. В контекстном меню выбрать пункт \menu{Delete}. Рассмотрим удаление на примере признака \texttt{vendor}. Контекстное меню, открытое после нажатия на заголовке \texttt{vendor} показано на рисунке справа.
 	\end{ist}
-	\begin{ist}{img2/delete-one-result.png}{Посмотреть результат}
+	\begin{ist}{img/delete-one-result.png}{Посмотреть результат}
 		В результате выполнения операции выбранный признак будет удалён только из панели исходных данных, но останется на второй панели.
 	\end{ist}		
 \end{steps}
@@ -661,13 +661,13 @@
 Если требуется полностью очистить панель нормализованных данных или удалить большое количество признаков, то следует воспользоваться функцией, описанной ниже. Функция удаления нескольких признаков сразу может быть использована для быстрого исключения лишних признаков.
 
 \begin{steps}
-	\begin{ist}{img2/press-delete-ico.png}{Запустить удаление}
-		Функция удаления нескольких признаков вызывается щелчком ЛКМ на иконке \includegraphics[scale=0.1]{img2/delete.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:delete}).
+	\begin{ist}{img/press-delete-ico.png}{Запустить удаление}
+		Функция удаления нескольких признаков вызывается щелчком ЛКМ на иконке \includegraphics[scale=0.1]{img/delete.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:delete}).
 	\end{ist}
-	\begin{ist}{img2/delete-several-select.png}{Выбрать удаляемые признаки}
+	\begin{ist}{img/delete-several-select.png}{Выбрать удаляемые признаки}
 		Выбор удаляемых признаков производится при помощи выставления соответствующих флажков. Все отмеченные признаки будут удалены из панели нормализованных данных. Когда выбор завершён, нажать кнопку \button{Ok}.
 	\end{ist}	
-	\begin{ist}{img2/delete-several-result.png}{Посмотреть результат}
+	\begin{ist}{img/delete-several-result.png}{Посмотреть результат}
 		В результате выполнения операции выбранные признаки будут удалены с панели нормализованных данных.
 	\end{ist}	
 		
@@ -681,13 +681,13 @@
 В качестве первичного инструмента анализа программа предлагает возможность построения гистограмм выбранного признака.
 
 \begin{steps}
-	\begin{ist}{img2/hist-pick-menu.png}{Выбрать признак}
+	\begin{ist}{img/hist-pick-menu.png}{Выбрать признак}
 		Для построения гистограммы необходимо определиться с признаком, по которому будет построена гистограмма. Для этого надо щёлкнуть ПКМ на названии столбца соответствующего признака. В контекстном меню выбрать пункт \menu{Histogram}. На примере показано построение гистограммы по признаку \texttt{price}
 	\end{ist}
-	\begin{ist}{img2/hist-set-bins.png}{Отрегулировать количество бинов}
+	\begin{ist}{img/hist-set-bins.png}{Отрегулировать количество бинов}
 		Как известно, вид гистограммы может зависеть от числа интервалов, на которые разбиваются область допустимых значений. Поэтому, в программе предусмотрена регулировка этого параметра. В нижнем полк ввода можно выставить требуемое число интервалов.
 	\end{ist}
-	\begin{ist}{img2/hist-result.png}{Посмотреть результат}
+	\begin{ist}{img/hist-result.png}{Посмотреть результат}
 		Результат построения гистограммы будет доступен сразу же в том же окне. На рисунке справа показана гистограмма, построенная для ненормализованного признака \texttt{price} при количестве интервалов, равным 100. Окно отображения гистограммы обладает всеми стандартными кнопками для управления визуализациями, в том числе для сохранения в файл.
 	\end{ist}		
 \end{steps}	
@@ -700,26 +700,26 @@
 Для первичного анализа структуры данных или результатов кластеризации в программе предусмотрена функция построения поля рассеяния по меткам на выбранных признаках. Метка --- вспомогательный символ, присваиваемый пользователем для  определённого признака.  Предусмотрено 3 вида меток: ``\texttt{X}'', ``\texttt{Y}'', ``\texttt{C}''. Первый вид означает что отмеченный признак будет соответствовать координатам объекта по оси абсцисс, второй --- по оси ординат, а третий, что цвет (\textit{Color}) точки будет выбираться в соответствии со значением отмеченного признака
 
 \begin{steps}
-	\begin{ist}{img2/set-as-x.png}{Выбрать признак по оси X}
+	\begin{ist}{img/set-as-x.png}{Выбрать признак по оси X}
 		Для построения поля рассеяния требуется задать признаки по осям абсцисс и ординат. Чтобы отметить признак, соответствующий оси абсцисс, требуется нажать на его названии ПКМ и в контекстном меню выбрать
 		\menu{Set} $\Rightarrow$ \menu{as X}
 	\end{ist}
-	\begin{ist}{img2/set-as-x-done.png}{Посмотреть результат}
+	\begin{ist}{img/set-as-x-done.png}{Посмотреть результат}
 		После установки маркера ``\texttt{X}'' к имени соответствующего признак добавиться ``\texttt{(X)}''. На примере показано добавление метки ``\texttt{X}''  к признаку \texttt{diag}.
 	\end{ist}	
-	\begin{ist}{img2/set-as-y-done.png}{Выбрать признак по оси Y}
+	\begin{ist}{img/set-as-y-done.png}{Выбрать признак по оси Y}
 		Аналогично пунктам 1,2. В примере указан признак \texttt{cpu}.
 	\end{ist}
-	\begin{ist}{img2/set-as-c-done.png}{Выбрать признак, отвечающий за цвет (опционально)}
+	\begin{ist}{img/set-as-c-done.png}{Выбрать признак, отвечающий за цвет (опционально)}
 		Для того чтобы задать, какой признак будет определять цвет точек на диаграмме, необходимо выставить маркер ``\texttt{C}''. Для этого выбрать в контекстном меню выбрать \menu{Set} $\Rightarrow$ \menu{as С}. 
 	\end{ist}
-	\begin{ist}{img2/plot-by-markers.png}{Построить scater plot}
+	\begin{ist}{img/plot-by-markers.png}{Построить scater plot}
 		В главном меню выбрать \menubox{\texttt{Plot}} $\Rightarrow$ \menubox{\texttt{By markers}} 
 	\end{ist}
-	\begin{ist}{img2/plot-by-markers-result.png}{Посмотреть результат}
+	\begin{ist}{img/plot-by-markers-result.png}{Посмотреть результат}
 		В новом окне откроется построенная красивая и цветастая диаграмма. Как и прочие окна отображения графической информации, окно отображения scatter plot имеет кнопки для управления видом и сохранения изображения в файл (подробнее см. рисунок \ref{fig:plot-view}, обозначения \ref{itm:view-control1}-\ref{itm:view-control6}). На примере показана диаграмма, у которой по оси X отложен признак \texttt{diag}, по оси Y --- \texttt{cpu}, цвет определяется признаком \texttt{stype}.
 	\end{ist}
-	\begin{ist}{img2/plot-by-markers-delete.png}{Удалить метки (опционально)}
+	\begin{ist}{img/plot-by-markers-delete.png}{Удалить метки (опционально)}
 		В главном меню выбрать \menubox{\texttt{Plot}} $\Rightarrow$ \menubox{\texttt{Delete All Markers}}. При этом отметки ``\texttt{X}'', ``\texttt{Y}'' и ``\texttt{C}'' будут удалены.
 	\end{ist}
 	
@@ -730,11 +730,11 @@
 \label{subsubsec:svd}
 Для интегральной оценки структуры данных предусмотрена функция построения SVD диаграммы. Имеется возможность построения SVD диаграммы по нормализованным и не нормализованным данным.
 \begin{steps}
-	\begin{ist}{img2/plot-svd.png}{Построить SVD диаграмму}
+	\begin{ist}{img/plot-svd.png}{Построить SVD диаграмму}
 		Для построения SVD диаграммы в главном меню выбрать \menu{Plot} $\Rightarrow$ \menu{SVD} $\Rightarrow$ \menu{Normalized} или \menu{Raw} для построения диаграммы по нормализованным и не нормализованным данным соответственно.
 	\end{ist}
 
-	\begin{ist}{img2/svd.png}{Посмотреть результат}
+	\begin{ist}{img/svd.png}{Посмотреть результат}
 		Построенная диаграмма откроется в новом окне, как показано на рисунке справа.\vspace{6.5cm}
 	\end{ist}
 \end{steps}
@@ -744,16 +744,16 @@
 Для генерирования искусственных данных необходимо вызвать диалог настройки параметров, указать все необходимые величины и сохранить сгенерированные данные в файл.
 
 \begin{steps}
-	\begin{ist}{img2/gen-open-dialog.png}{Открыть диалог генерации данных}
+	\begin{ist}{img/gen-open-dialog.png}{Открыть диалог генерации данных}
 		Чтобы открыть диалог загрузки данных, необходимо в главном меню программы выбрать \menu{File} $\Rightarrow$ \menu{Data operations} $\Rightarrow$ \menu{Generate}.
 	\end{ist}
-	\begin{ist}{img2/gen-dialog.png}{Указать параметры данных}
+	\begin{ist}{img/gen-dialog.png}{Указать параметры данных}
 		В открывшемся диалоге необходимо указать параметры данных, по которым будет производиться генерация. Подробнее о параметрах генерации см. \cite{kovaleva}. В верхней части диалога отображается динамическая информирующая диаграмма. Когда все параметры будут введены, нажать кнопку \button{OK}. \vspace{1.2cm}
 	\end{ist}
-	\begin{ist}{img2/save-dataset.png}{Указать имя файла}
+	\begin{ist}{img/save-dataset.png}{Указать имя файла}
 		В файловом диалоге указать имя файла, куда будут сохранены сгенерированные данные. Нажать кнопку \button{Ok} 
 	\end{ist}
-	\begin{ist}{img2/save-dataset-labels.png}{Выбрать как сохранить кластеры}
+	\begin{ist}{img/save-dataset-labels.png}{Выбрать как сохранить кластеры}
 		Принадлежность кластера определяется по целочисленными меткам, присвоенным каждому объекту. Для задания способа сохранения меток откроется окно, как показано на рисунке справа. На выбор доступны опции сохранения меток как отдельный признак в том же файле, в отдельном файле или их можно вообще не сохранять. Выбрав нужную опцию, нажать \button{Ok}. Файлы будут сохранены соответственно выбранным настройкам.
 	\end{ist}
 \end{steps}
@@ -764,13 +764,13 @@
 Для определения принадлежности объектов кластерам требуется установить параметры кластеризации и запустить алгоритм.
 
 \begin{steps}
-	\begin{ist}{img2/run-clustering.png}{Открыть диалог выбора параметров}
+	\begin{ist}{img/run-clustering.png}{Открыть диалог выбора параметров}
 		Для запуска алогритма кластеризации первым делом тербуется открыть диалого настройки параметров. Для этого выбрать в главном меню \menu{Run} $\Rightarrow$ \menu{<Алгоритм>}, где \texttt{<Алгоритм>} соответствует названию одного из реализованных алгоритмов, например, \AWard. Список всех реализованных алгоритмов можно увидеть на рисунке.
 	\end{ist}
-	\begin{ist}{img2/a-ward-dialog.png}{Настроить параметры алгоритма}
+	\begin{ist}{img/a-ward-dialog.png}{Настроить параметры алгоритма}
 		Для большинства алгоритмов требуется указать некоторые управлящие параметры, для справки по соответствующим диалоговым окнам см. раздел. \fullref{subsubsec:run-clustering-dialog}. После задания параметров нажать кнопку \button{Ok}.
 	\end{ist}
-	\begin{ist}{img2/clustering-complete.png}{Дождаться результатов кластеризации}
+	\begin{ist}{img/clustering-complete.png}{Дождаться результатов кластеризации}
 		Сразу после нажатия кнопки \button{Ok} будет запущена работа алгоритма.
 		Когда кластеризация будет завершена, в строке состояния будет выведена краткая информация о алгоритме и времени работы. В то же время в столбце \texttt{Cluster \#} будут проставлены метки кластеров. Каждая метка соответствует номеру кластера, которому принадлежит объект.
 	\end{ist}
@@ -783,14 +783,14 @@
 
 \subsubsection{Текстовый отчёт}
 \begin{steps}
-	\begin{ist}{img2/report-text.png}{Сгенерировать отчёт}
+	\begin{ist}{img/report-text.png}{Сгенерировать отчёт}
 		Для генерации текстового отчёта в главном меню выбрать \menu{Report} $\Rightarrow$ \menu{Text}.
 	\end{ist}
-	\begin{ist}{img2/select-features-dialog.png}{Выбрать признаки}
+	\begin{ist}{img/select-features-dialog.png}{Выбрать признаки}
 		Выбрать признаки, которые будут включены в текстовый отчёт. Для этого отметить флажки соответствующие тем признакам, которые требуется указать в отчёте. \vspace{2.5cm}
 	\end{ist}
 	
-	\begin{ist}{img2/text-report-done.png}{Посмотреть окно отчёта}
+	\begin{ist}{img/text-report-done.png}{Посмотреть окно отчёта}
 		Окно текстового отчёта показано на рисунке справа и содержит только текстовое поле с табулированным отчётом. Из этого окна текст можно скопировать в файл.
 	\end{ist}
 		
@@ -800,10 +800,10 @@
 \subsubsection{Табличный отчёт}
 
 \begin{steps}
-	\begin{ist}{img2/report-text.png}{Сгенерировать отчёт}
+	\begin{ist}{img/report-text.png}{Сгенерировать отчёт}
 		Для генерации табличного отчёта в главном меню выбрать \menu{Report} $\Rightarrow$ \menu{Table}.
 	\end{ist}
-	\begin{ist}{img2/table-report-done.png}{Посмотреть окно отчёта}
+	\begin{ist}{img/table-report-done.png}{Посмотреть окно отчёта}
 		В окне табличного отчёта приведена сводная таблица в которой строки соответствуют кластерам, а столбцы --- признакам. В ячейках указаны средние значения признака по кластеру. Красным цветом выделены ячейки, в которых относительная разность значения и средней величины признака по кластеру больше 30\%, соответственно синим --- меньше 30\%. Маргинальная строка содержит средние значения признаков по всем кластерам, а столбец --- число объектов в кластере.
 	\end{ist}
 	
@@ -814,7 +814,7 @@
 \subsection{Выход из программы}
 
 \begin{steps}
-	\begin{ist}{img2/exit-indact.png}{Выйти из программы}
+	\begin{ist}{img/exit-indact.png}{Выйти из программы}
 			Для выхода из программы в главном меню выбрать \menu{File} $\Rightarrow$ \menu{Exit}. \textbf{Поздравляем, вы завершили работу с программой!}
 	\end{ist}
 \end{steps}
@@ -830,6 +830,20 @@
 Недостаток алгоритма Уорда --- медленность вычислений, связанная с необходимостью отыскания минимума расстояний, которых очень много на начальных этапах агломерации. В алгоритме А-Уорд эти шаги пропускаются, поскольку шаги агломерации применяются к некоторому предварительному разбиению объектов на достаточно малое число кластеров. Это-то предварительное разбиение используется как начальное для работы метода Уорда. Классы предварительного разбиения --- это кластеры, полученные методом аномальной кластеризации.
 
 Метод аномальной кластеризации находит и удаляет аномальные кластеры по одному до тех пор, пока не останется объектов для кластеризации. В основе этого метода лежит критерий квадратичной ошибки метода к-средних. Аномальным называется такой кластер, который наиболее удалён от начала координат, куда предварительно переносится центр данных. Его построение начинается с самого удалённого объекта, а затем в него добавляются все объекты, которые ближе к центру кластера, чем к точке начала отсчёта. Центр аномального кластера обновляется на каждом шаге, в то время как центр данных остаётся неизменным.
+
+\begin{figure} % \ContinuedFloat
+	\centering
+	\subfigure[]{\label{fig:ward1}\includestandalone[width=0.49\textwidth]{tikz-ward/ward1}}
+	\subfigure[]{\label{fig:ward2}\includestandalone[width=0.49\textwidth]{tikz-ward/ward2}}
+	\subfigure[]{\label{fig:ward3}\includestandalone[width=0.49\textwidth]{tikz-ward/ward3}}
+	\subfigure[]{\label{fig:ward4}\includestandalone[width=0.49\textwidth]{tikz-ward/ward4}}
+	\subfigure[]{\label{fig:ward3}\includestandalone[width=0.49\textwidth]{tikz-ward/ward5}}
+	\subfigure[]{\label{fig:ward4}\includestandalone[width=0.49\textwidth]{tikz-ward/ward-tree}}
+	\caption{Принцип работы \AWard}
+	\label{fig:ward-working}
+\end{figure}
+
+
 
 
 \subsection{Алгоритм  \AWardpb}
@@ -852,6 +866,17 @@
 Алгоритм dePDDP (Principal Direction Divisive Partitioning) относится к иерархическим дивизивным. Первоначально критерий разделения кластера на две части был относительно простым: предлагалось разделить кластер по его главной компоненте на положительную и отрицательную части. В алгоритме dePDDP эта идея усовершенствована при помощи правила, учитывающего распределение данных. Разбиение производится по наиболее глубокому минимуму функции плотности данных, спроецированных на первую главную компоненту данного кластера. Это правило используется для решения двух сопряжённых проблем: выбора кластера для разбиения и остановки алгоритма. Для разбиения выбирается кластер с наименьшим минимумом среди всех терминальных кластеров. Если кластер имеет монотонную или выпуклую функцию плотности, то такой кластер не может быть разделен по критерию данного алгоритма. Экспериментально было показано, что алгоритм, работающий на описанных принципах эффективно решает задачу кластеризации как на реальных данных, так и на 
 синтетических. Оценка функции плотности осуществляется по методу ядерной оценки (окно Парзена).
 
+\begin{figure} % \ContinuedFloat
+	\centering
+	\subfigure[]{\label{fig:ward1}\includestandalone[width=0.49\textwidth]{tikz-depddp/depddp1}}
+	\subfigure[]{\label{fig:ward2}\includestandalone[width=0.49\textwidth]{tikz-depddp/depddp2}}
+	\subfigure[]{\label{fig:ward3}\includestandalone[width=0.49\textwidth]{tikz-depddp/depddp3}}
+	\subfigure[]{\label{fig:ward4}\includestandalone[width=0.49\textwidth]{tikz-depddp/depddp4}}
+	\subfigure[]{\label{fig:ward4}\includestandalone[width=0.49\textwidth]{tikz-depddp/depddp5}}
+	\subfigure[]{\label{fig:ward4}\includestandalone[width=0.49\textwidth]{tikz-depddp/depddp6}}
+	\caption{Принцип работы \dePDDP}
+	\label{fig:depddp-working}
+\end{figure}
 
 \section{Демонстрация работы программы}
 \subsection{Нормализация}
@@ -861,37 +886,37 @@
 В данном разделе рассматривается пример нормализации признаков обучающего файла \texttt{smartphones.dat} с центрированием по среднему и масштабированием по полуразмаху. 
 
 \begin{steps}
-	\begin{ist}{img2/run-exe.png}{Запустить бинарный файл программы}		
+	\begin{ist}{img/run-exe.png}{Запустить бинарный файл программы}		
 		Дважды нажать левой кнопкой мыши (ЛКМ) на значке \ExeFile. 
 	\end{ist}
-	\begin{ist}{img2/open-file-menu.png}{Открыть диалог загрузки файла}		
+	\begin{ist}{img/open-file-menu.png}{Открыть диалог загрузки файла}		
 		Последовательно нажать в главном меню пункты \menu{File} $ \Rightarrow $ \menu{Load data file}.
 	\end{ist}
-	\begin{ist}{img2/open-smartphones.png}{Выбрать текстовый файл с данными}
+	\begin{ist}{img/open-smartphones.png}{Выбрать текстовый файл с данными}
 		В файловом диалоге выбрать загружаемый файл \texttt{\SysName /data/} \texttt{smartphones.dat} и нажать кнопку \menu{Open}.
 	\end{ist}
-	\begin{ist}{img2/load-result.png}{Убедиться что файл загружен}
+	\begin{ist}{img/load-result.png}{Убедиться что файл загружен}
 		Посмотреть, что панель исходных данных заполнилась данными из файла.		
 	\end{ist}
-	\begin{ist}{img2/delete-vendor.png}{Удалить признак \texttt{vendor}}
+	\begin{ist}{img/delete-vendor.png}{Удалить признак \texttt{vendor}}
 		Вызвать контекстное меню на признаке \texttt{vendor} при помощи ПКМ и выбрать пункт \menu{Delete}.
 	\end{ist}
-	\begin{ist}{img2/delete-vendor-done.png}{Убедиться, что признак удалился}
+	\begin{ist}{img/delete-vendor-done.png}{Убедиться, что признак удалился}
 		Результат удаления признака \texttt{vendor} показан на рисунке справа. Видно, что признак \texttt{vendor} больше не отображается на панели исходных данных. 
 	\end{ist}	
-	\begin{ist}{img2/click-norm.png}{Открыть окно нормализации}
-		Диалог нормализации можно открыть щелчком ЛКМ на иконке \includegraphics[scale=0.1]{img2/settings.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:settings})
+	\begin{ist}{img/click-norm.png}{Открыть окно нормализации}
+		Диалог нормализации можно открыть щелчком ЛКМ на иконке \includegraphics[scale=0.1]{img/settings.png} (см. рисунок \ref{fig:gui} обозначение \ref{itm:settings})
 	\end{ist}
-	\begin{ist}{img2/norm-tutorial.png}{Выставить параметры}
+	\begin{ist}{img/norm-tutorial.png}{Выставить параметры}
 		Выставить параметры нормализации, как показано на рисунке справа. Переключатель ``\texttt{Normalization enabled}'' должен быть включен, значение \texttt{Center} выбрано \texttt{Mean}, а значение \texttt{Range} --- \texttt{Semi range}. Подтвердить ввод \menubox{\texttt{OK}}. 
 	\end{ist}	
-	\begin{ist}{img2/norm-several.png}{Запустить нормализацию нескольких признаков }
-		Чтобы нормализовать несколько признаков сразу, требуется нажать иконку \includegraphics[scale=0.1]{img2/norm_all.png}. Откроется окно выбора признаков.
+	\begin{ist}{img/norm-several.png}{Запустить нормализацию нескольких признаков }
+		Чтобы нормализовать несколько признаков сразу, требуется нажать иконку \includegraphics[scale=0.1]{img/norm_all.png}. Откроется окно выбора признаков.
 	\end{ist}
-	\begin{ist}{img2/tutorial-select-all.png}{Выбрать признаки для нормализации}
+	\begin{ist}{img/tutorial-select-all.png}{Выбрать признаки для нормализации}
 		В открытом окне выбрать все признаки, за исключением признака \texttt{name}. Для этого нажать кнопку \button{All} и после снять выделение с \texttt{name}. Подтвердить выбор кнопкой \button{Ok}. \vspace{1cm}
 	\end{ist}
-	\begin{ist}{img2/norm-tutorial-result.png}{Проверить результат нормализации}
+	\begin{ist}{img/norm-tutorial-result.png}{Проверить результат нормализации}
 		После выполнения нормализации выбранные признаки будут добавлены на панель нормализованных данных, при этом категориальный признак \texttt{stype} разложится в бинарный.
 	\end{ist}
 \end{steps}
@@ -903,12 +928,12 @@
 \begin{steps}
 	\begin{istt}{Выполнить пункты 1--7 из предыдущего примера (\ref{subsubseq:example_norm1}).}{Запустить программу и загрузить файл}
 	\end{istt}
-	\begin{ist}{img2/mink-norm-params.png}{Выставить параметры нормализации}
+	\begin{ist}{img/mink-norm-params.png}{Выставить параметры нормализации}
 		Выставить параметры нормализации, как показано на рисунке справа. Переключатель ``\texttt{Normalization enabled}'' должен быть включён, значение поля Center --- \texttt{Minkowski Center}, величина \texttt{Minkowski Power} выставлена равной \texttt{4}, а параметр \texttt{Range} --- \texttt{Standard deviation}.
 	\end{ist}
 	\begin{istt}{Выполнить пункты 9,10 из предыдущего примера (\ref{subsubseq:example_norm1}).}{Нормализовать все признаки}
 	\end{istt}
-	\begin{ist}{img2/mink-tutorial-result.png}{Посмотреть результат нормализации}
+	\begin{ist}{img/mink-tutorial-result.png}{Посмотреть результат нормализации}
 		После выполнения нормализации выбранные признаки будут добавлены на панель нормализованных данных.
 	\end{ist}
 \end{steps}
@@ -919,48 +944,48 @@
 Рассмотрим пример кластеризации с использованием метода, который предусматривает автоматическое вычисление числа кластеров в процессе работы. Используем для этого процедуру нормализации, проиллюстрированную ранее. Выберем типичные значения параметров нормализации: центрирование по среднему, масштабирование полуразмахом (см. \ref{subsubseq:example_norm1}). 
 
 \begin{steps}
-	\begin{ist}{img2/norm-tutorial-result.png}{Запустить программу, загрузить файл и нормализовать признаки}
+	\begin{ist}{img/norm-tutorial-result.png}{Запустить программу, загрузить файл и нормализовать признаки}
 		Выполнить все пункты из первого примера(\ref{subsubseq:example_norm1}). Для кластеризации требуются нормализованные признаки.		
 	\end{ist}
-	\begin{ist}{img2/tutorial-run-bikmr.png}{Открыть окно кластеризации}
+	\begin{ist}{img/tutorial-run-bikmr.png}{Открыть окно кластеризации}
 		Для запуска кластеризации требуется открыть окно с настройками кластеризации. В данном примере рассматривается автоматическое определение числа кластеров, поэтому в главном меню выберем \menu{Run} $ \Rightarrow $ \menu{Bi KMeans-R}. 
 	\end{ist}
-	\begin{ist}{img2/tutorial-bikmr.png}{Задать параметр алгоритма}
+	\begin{ist}{img/tutorial-bikmr.png}{Задать параметр алгоритма}
 		Алгоритм \BiKMR требует задания единственного параметра $ \epsilon $. В данном случае рекомендуется оставить значение по умолчанию. Подтвердить ввод кнопкой \button{Ok}
 	\end{ist}
-	\begin{ist}{img2/tutorial-bikmr-done.png}{Дождатся завершения работы алгоритма}
+	\begin{ist}{img/tutorial-bikmr-done.png}{Дождатся завершения работы алгоритма}
 		Выполнение алгоритма тербует некоторого времени, после завершения работы краткая инфромация о последнем запущенном алгоритме и времени работы будет отображена в строке состояния. Например, на рисунке справа видно, что алгоритм \BiKMR при $ \epsilon=0.32 $ завершился за 6,23 сек.
 	\end{ist}
-	\begin{ist}{img2/tutorial-bikmr-done.png}{Посмотреть кластеры}
+	\begin{ist}{img/tutorial-bikmr-done.png}{Посмотреть кластеры}
 		После завершения алгоритма в столбце \texttt{Cluster \#} будут показаны метки кластерной принадлежности объектов, как показано на рисунке справа. Следует иметь ввиду, что алгоритм \BiKMR использует в работе случайно сгенерированные направления, поэтому для различных запусков при разной инициализации генератора случайных чисел результаты могут отличаться.
 	\end{ist}
 	
-	\begin{ist}{img2/tutorial-set-c.png}{Установить метку \texttt{C}}
+	\begin{ist}{img/tutorial-set-c.png}{Установить метку \texttt{C}}
 		Для того чтобы обозначть, что полученное разбиение будет теперь определять цвет на диаграммах, требуется выставить метку \texttt{C} на столбец \texttt{Cluster \#}. Для этого в контекстном меню выбрать соответствующие пункты, как показано на рисунке справа.
 	\end{ist}
-	\begin{ist}{img2/tutorial-plot-svd.png}{Построить диаграмму SVD}
+	\begin{ist}{img/tutorial-plot-svd.png}{Построить диаграмму SVD}
 		Для общей оценки полученного разбиения можно построить SVD диаграмму. Для этого в главном меню выбрать \menu{Plot} $ \Rightarrow $ \menu{SVD} $ \Rightarrow $ \menu{Normalized}.
 	\end{ist}
-	\begin{ist}{img2/tutorial-plot-svd-select-features.png}{Выбрать признаки}
+	\begin{ist}{img/tutorial-plot-svd-select-features.png}{Выбрать признаки}
 		Для построения диаграммы выбрать все признаки, которые участвовали в кластеризации.
 	\end{ist}
-	\begin{ist}{img2/tutorial-svd-result.png}{Посмотреть SVD диаграмму}
+	\begin{ist}{img/tutorial-svd-result.png}{Посмотреть SVD диаграмму}
 		Полученная диаграмма показана на рисунке справа. \vspace{7cm}
 	\end{ist}
-	\begin{ist}{img2/tutorial-gen-text-report.png}{Сгенерировать текстовый отчёт}
+	\begin{ist}{img/tutorial-gen-text-report.png}{Сгенерировать текстовый отчёт}
 		Для генерации текстового отчёта в главном меню выбрать пункты \menu{Report} $ \Rightarrow $ \menu{Text}.
 	\end{ist}
-	\begin{ist}{img2/tutorial-gen-text-select-features.png}{Выбрать признаки}
+	\begin{ist}{img/tutorial-gen-text-select-features.png}{Выбрать признаки}
 		В открывшемся окрне выбрать признаки, по которые будут включены в отчёт. Для быстрого выбора всех признаков, можно нажать кнопку \button{All}. Подтвердить выбор кнопкой \button{Ok}.
 	\end{ist}
-	\begin{ist}{img2/tutorial-view-text-report.png}{Посмотреть текстовый отчёт}
+	\begin{ist}{img/tutorial-view-text-report.png}{Посмотреть текстовый отчёт}
 		Посмотреть текстовый отчет в открывшемся окне. Вид окна показан на рисунке справа.
 	\end{ist}
-	\begin{ist}{img2/tutorial-gen-table-report.png}{Сгенерировать табличный отчёт}
+	\begin{ist}{img/tutorial-gen-table-report.png}{Сгенерировать табличный отчёт}
 		Для генерации текстового отчёта в главном меню выбрать пункты \menu{Report} $ \Rightarrow $ \menu{Table}.
 	\end{ist}
 	
-	\begin{ist}{img2/tutorial-view-table-report.png}{Посмотреть табличный отчёт}
+	\begin{ist}{img/tutorial-view-table-report.png}{Посмотреть табличный отчёт}
 		Посмотреть табличный отчет в открывшемся окне.
 	\end{ist}
 
@@ -972,16 +997,16 @@
 Если известно конкретное число кластеров входящих в состав данных, можно применить методы, подразумевающие явный ввод с клавиатуры. Метод \AWard позволяет задать число кластеров (см. раздел \ref{subsec:a-ward}).
 
 \begin{steps}
-	\begin{ist}{img2/mink-tutorial-result.png}{Запустить программу, загрузить файл и нормализовать признаки}
+	\begin{ist}{img/mink-tutorial-result.png}{Запустить программу, загрузить файл и нормализовать признаки}
 		Выполнить все пункты из второго примера по нормализации (\ref{subsubseq:example_norm2}). Для кластеризации требуются нормализованные признаки. Для данного примера используются нормализация с центрированием Минковского.
 	\end{ist}
-	\begin{ist}{img2/tutorial-run-awardpb.png}{Выбрать алгоритм \AWardpb}
+	\begin{ist}{img/tutorial-run-awardpb.png}{Выбрать алгоритм \AWardpb}
 		В главном меню выбрать пункт \menu{Run} $ \Rightarrow $ \menu{\AWardpb}
 	\end{ist}
-	\begin{ist}{img2/tutorial-awardpb-settings.png}{Задать настройки}
+	\begin{ist}{img/tutorial-awardpb-settings.png}{Задать настройки}
 		В открывшемся диалоговом окне задать настройки алгоритма, как показано на рисунке справа. Подтвердить ввод кнопкой \button{Ok}.\vspace{5cm}
 	\end{ist}
-	\begin{ist}{img2/tutorial-awardpb-result.png}{Дождаться результата кластеризации}
+	\begin{ist}{img/tutorial-awardpb-result.png}{Дождаться результата кластеризации}
 		Выполнение алгоритма тербует некоторого времени, после завершения работы краткая инфромация о последнем запущенном алгоритме и времени работы будет отображена в строке состояния. Например, на рисунке справа видно, что алгоритм \AWardpb при заданных параметрах завершился за 0,93 сек.
 	\end{ist}
 	\begin{istt}{Повторить операции 5--14 из предыдущего примера \ref{subsubsec:clustering_example1} }{Построить диаграммы и отчёты}
